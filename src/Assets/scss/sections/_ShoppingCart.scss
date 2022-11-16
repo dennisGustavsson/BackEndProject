@@ -1,0 +1,88 @@
+.shoppingcart {
+    width: 100% !important;
+
+    .offcanvas-header {
+        background-color: $color-theme-black-1;
+        color: $color-theme-white;
+    }
+
+    //media query desktop
+    @include lg {
+        width: 500px !important;
+    }
+
+    .shoppingcart-item {
+        margin: 1rem;
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+
+        .item-img {
+            height: 65px;
+            width: 65px;
+            margin-right: 1rem;
+            background-color: $color-gray-1;
+
+            img {
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+
+        button {
+            background-color: $color-theme-white;
+            border: 1px solid black;
+            display: inline-block;
+            padding: 0;
+            width: 30px;
+            margin-top: 5px;
+
+            &:active {
+                background-color: $color-theme-black-1;
+                color: $color-theme-white;
+            }
+        }
+
+        .item-info {
+            flex: 3;
+
+            .item-infoName {
+                font-size: $font-size-16;
+                font-weight: $font-w-medium;
+            }
+
+            .item-infoQuantity {
+
+                .quantity {
+                    border: 1px solid black;
+                    border-right: 0;
+                    border-left: 0;
+                    display: inline-block;
+                    height: 100%;
+                    width: 35px;
+                    text-align: center;
+                    font-weight: $font-w-semibold;
+                }
+            }
+        }
+
+        .item-price {
+            font-weight: $font-w-semibold;
+            text-align: right;
+
+            .trash {
+                border: none;
+                text-align: right;
+                background-color: transparent;
+
+                &:active {
+                    color: $color-gray-5;
+                }
+            }
+
+            i {
+                font-size: 12px;
+            }
+        }
+    }
+}

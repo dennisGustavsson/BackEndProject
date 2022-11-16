@@ -1,0 +1,35 @@
+.grid-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    .container {
+        margin: 0;
+        padding: 0;
+        display: grid;
+        justify-content: center;
+
+        //media query tablet and desktop
+        @include md {
+            .section-title {
+                margin-top: 8rem;
+            }
+        }
+    }
+
+    .product-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+
+        //media query tablet
+        @include md {
+            grid-template-columns: auto auto;
+        }
+
+        //media query desktop
+        @include lg {
+            grid-template-columns: repeat(4, auto);
+        }
+    }
+}

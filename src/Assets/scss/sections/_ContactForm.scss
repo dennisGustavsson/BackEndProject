@@ -1,0 +1,169 @@
+.contact-us {
+    margin-top: 2rem;
+    margin-bottom: 4rem;
+    padding-inline: 1rem;
+
+    h3 {
+        font-size: $font-size-18;
+        font-weight: $font-w-bold;
+    }
+
+}
+
+.form-theme {
+    border: none;
+    display: grid;
+    justify-content: space-between;
+    grid-template-columns: 1fr;
+
+    label {
+        position: absolute;
+        top: 30%;
+        left: 1rem;
+        color: $color-gray-20;
+        transition: 200ms ease all;
+    }
+
+    input {
+        border-radius: 0;
+        border: 1px solid $color-gray-10;
+        height: 50px;
+
+        &:focus {
+            outline: 0;
+            box-shadow: 0px 0px 2px 1px $color-theme-link;
+
+            +label {
+                top: 60%;
+                font-size: 0.7rem;
+                background-color: $color-theme-white;
+                padding-inline: 1rem;
+                box-shadow: 0 0 2px 1px $color-theme-white;
+            }
+        }
+
+    }
+
+    input[type=text],
+    input[type=email] {
+        margin: 0;
+        padding: 0.5rem 1rem;
+        width: 100%;
+        margin-bottom: 2rem;
+        margin-top: 1rem;
+    }
+
+    textarea {
+        width: 100%;
+        height: 200px;
+        padding: 1rem;
+        resize: none;
+        border-radius: 0;
+        border: 1px solid $color-gray-10;
+        margin-top: 1rem;
+
+        +label {
+            top: 2rem;
+        }
+
+        &:focus {
+            outline: 0;
+            box-shadow: 0px 0px 2px 1px $color-theme-link;
+
+            +label {
+                top: 93%;
+                font-size: 0.7rem;
+                background-color: $color-theme-white;
+                padding-inline: 1rem;
+                box-shadow: 0 0 2px 1px $color-theme-white;
+            }
+        }
+    }
+
+    // to keep "placeholder label" at bottom on name and email input (activates when user starts typing and placeholder disapears
+    input:not(:placeholder-shown)+label {
+        top: 60%;
+        font-size: 0.7rem;
+        background-color: $color-theme-white;
+        padding-inline: 1rem;
+        box-shadow: 0 0 2px 1px $color-theme-white;
+    }
+
+    // same as above for textarea
+    textarea:not(:placeholder-shown)+label {
+        top: 93%;
+        font-size: 0.7rem;
+        background-color: $color-theme-white;
+        padding-inline: 1rem;
+        box-shadow: 0 0 2px 1px $color-theme-white;
+    }
+
+    button {
+        width: 100%;
+        margin-top: 2rem;
+        padding: 0 4rem;
+
+        @include lg {
+            width: 300px;
+        }
+    }
+
+    i {
+        color: $color-theme-success;
+    }
+
+    .error-border {
+        box-shadow: 0 0 2px 1px red;
+
+        &:focus {
+            box-shadow: 0 0 2px 1px red;
+        }
+    }
+}
+
+.error-msg {
+    color: red;
+    font-style: italic;
+    font-size: $font-size-13;
+    position: absolute;
+    top: 5px;
+    left: 1rem;
+    background-color: white;
+    padding-inline: 0.5rem;
+    box-shadow: 0 0 2px 1px $color-theme-white;
+
+    &-btn {
+        position: absolute;
+        color: red;
+        font-size: $font-size-14;
+        font-style: italic;
+    }
+}
+
+
+.submitted {
+    display: grid;
+    justify-items: center;
+    margin-bottom: 2rem;
+    border: 1px solid rgb(127, 227, 127);
+    box-shadow: $color-drop-shadow;
+    padding: 2rem;
+
+    h3 {
+        color: $color-theme;
+    }
+}
+
+.submit-failed {
+
+    display: grid;
+    justify-items: center;
+    margin-bottom: 2rem;
+    border: 1px solid rgb(235, 33, 33);
+    box-shadow: $color-drop-shadow;
+    padding: 2rem;
+
+    h3 {
+        color: $color-theme;
+    }
+}

@@ -1,0 +1,84 @@
+.container {
+    max-width: 1110px;
+
+    .tabs {
+        padding-inline: 0.5rem;
+
+        //media query for desktop
+        @include lg {
+            padding: 0;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: space-around;
+            position: relative;
+            width: 100%;
+            padding: 0;
+
+            //media query for desktop
+            @include lg {
+                display: inline;
+            }
+
+            &:after {
+                content: ' ';
+                bottom: 0;
+                left: 0;
+                position: absolute;
+                border-bottom: 1px solid $color-gray-5;
+                width: inherit;
+                z-index: -1;
+
+                //media query for desktop
+                @include lg {
+                    bottom: -1px;
+                }
+            }
+
+            li {
+                display: inline;
+                font-weight: $font-w-medium;
+                margin-right: 2rem;
+                list-style: none;
+                font-size: $font-size-13;
+
+
+                &:hover {
+                    cursor: pointer;
+                }
+
+                &.active {
+                    border-bottom: 1px solid $theme-color;
+                    color: $theme-color;
+                }
+
+                &:last-child {
+                    margin-right: 0;
+                }
+
+                //media query for desktop
+                @include lg {
+                    font-size: $font-size-16;
+                }
+            }
+
+        }
+
+        .outlet {
+            min-height: 220px;
+            padding-top: 1rem;
+            line-height: 2rem;
+            margin-bottom: 4rem;
+        }
+
+    }
+
+    .firstTab {
+        color: black;
+    }
+
+    .secondTab {
+        color: black;
+    }
+}

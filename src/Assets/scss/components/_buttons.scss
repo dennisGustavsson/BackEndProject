@@ -1,0 +1,96 @@
+.btn-theme {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $theme-color;
+    color: $color-theme-white;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: $font-w-semibold;
+    min-width: 190px;
+    min-height: 60px;
+    border-radius: none;
+    border: none;
+    padding-inline: 1rem;
+    transition: 200ms ease-in-out;
+    cursor: pointer;
+
+    &:hover {
+        background-color: $color-theme-hover;
+        color: $color-theme-white;
+    }
+
+    &:focus {
+        background-color: $color-gray-15;
+    }
+
+    /* border corners */
+    &::before {
+        content: '';
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        border: 2px solid $color-theme-white;
+        border-right: none;
+        border-bottom: none;
+        width: 20px;
+        height: 20px;
+
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        border: 2px solid $color-theme-white;
+        border-left: none;
+        border-top: none;
+        width: 20px;
+        height: 20px;
+
+    }
+
+    &.btn-theme-white {
+        background-color: $color-theme-white;
+        color: $color-theme-black-1;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            border: 2px solid $color-theme-black-1;
+            border-right: none;
+            border-bottom: none;
+            width: 20px;
+            height: 20px;
+
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            border: 2px solid $color-theme-black-1;
+            border-left: none;
+            border-top: none;
+            width: 20px;
+            height: 20px;
+
+        }
+
+        &:hover {
+            background-color: $color-theme-black-1;
+            color: $color-theme-white;
+
+            &::before,
+            &::after {
+                border-color: $color-theme-white;
+            }
+        }
+    }
+
+}

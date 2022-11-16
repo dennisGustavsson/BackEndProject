@@ -1,25 +1,38 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import "./App.min.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom"
+import HomeView from "./Views/HomeView";
+import CategoriesView from "./Views/CategoriesView";
+import ProductsView from "./Views/ProductsView";
+import ProductDetailsView from "./Views/ProductDetailsView";
+import ContactsView from "./Views/ContactsView";
+import SearchView from "./Views/SearchView";
+import CompareView from "./Views/CompareView";
+import WishListView from "./Views/WishListView";
+import ShoppingcartView from "./Views/ShoppingcartView";
+import NotFoundView from "./Views/NotFoundView";
+import { ProductProvider } from "./Contexts/ProductContext";
+import { ShoppingCartProvider } from "./Contexts/ShoppingCartContext";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <ShoppingCartProvider>
+        <ProductProvider>
+          <Routes>
+            <Route path='/' element={<HomeView />} />
+            <Route path='/categories' element={<CategoriesView />} />
+            <Route path='/products' element={<ProductsView title={undefined} />} />
+            <Route path='/products/:id' element={<ProductDetailsView />} />
+            <Route path='/contacts' element={<ContactsView />} />
+            <Route path='/search' element={<SearchView />} />
+            <Route path='/compare' element={<CompareView />} />
+            <Route path='/wishlist' element={<WishListView />} />
+            <Route path='/shoppingcart' element={<ShoppingcartView />} />
+            <Route path='*' element={<NotFoundView />} />
+          </Routes>
+        </ProductProvider>
+      </ShoppingCartProvider>
+    </BrowserRouter>
   );
 }
 

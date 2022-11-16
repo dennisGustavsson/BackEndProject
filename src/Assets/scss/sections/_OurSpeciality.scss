@@ -1,0 +1,75 @@
+.speciality {
+    padding: 4rem 0;
+    background-color: $color-gray-1;
+}
+
+.service-content {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    //media query tablets
+    @include md {
+        gap: 1rem;
+        grid-template-columns: repeat(2, auto);
+        grid-auto-rows: auto;
+    }
+
+    //media query desktop
+    @include lg {
+        grid-template-columns: repeat(3, auto);
+        gap: 3rem;
+    }
+
+    .service-card {
+        width: 500px;
+        height: 250px;
+        display: flex;
+        align-items: center;
+        margin-bottom: 2rem;
+
+        .service-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background-color: $color-theme-white;
+            height: 100%;
+            width: 50%;
+            padding-inline: 1rem;
+
+            h2 {
+                font-size: $font-size-20;
+                font-weight: $font-w-semibold;
+            }
+        }
+
+        .service-img {
+            height: 100%;
+            width: 50%;
+            background-color: $color-gray-10;
+        }
+    }
+}
+
+.get-started {
+    display: inline-block;
+    position: relative;
+    font-weight: $font-w-semibold;
+    color: $color-theme-black-1;
+    text-decoration: none;
+    transition: 200ms color ease-in-out;
+
+    &:hover {
+        color: $color-theme;
+    }
+}
+
+.get-started::after {
+    content: '';
+    position: absolute;
+    border-bottom: 2px solid $color-theme-black-1;
+    width: 99%;
+    left: 0;
+    bottom: -1px;
+}

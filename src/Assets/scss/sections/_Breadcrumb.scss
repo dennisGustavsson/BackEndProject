@@ -1,0 +1,46 @@
+.breadcrumb {
+    @include md {
+        margin-top: 4.5rem;
+    }
+
+    .container {
+        display: inline-flex;
+        justify-content: flex-start;
+        align-items: center;
+        max-width: 1110px;
+
+        .breadcrumb-list {
+            height: 70px;
+            list-style: none;
+            display: inline-flex;
+            align-items: center;
+            padding: 1rem;
+
+            li {
+                margin-right: 0.5rem;
+                color: $theme-color;
+                font-weight: $font-w-semibold;
+
+                &+li:before {
+                    color: $color-theme-black-1;
+                    content: ">\00a0";
+                }
+
+                a {
+                    font-weight: $font-w-semibold;
+                    text-decoration: none;
+                    color: $color-theme-black-1;
+                    transition: 200ms color ease-in-out;
+
+                    &:hover {
+                        color: $theme-color;
+                    }
+                }
+
+            }
+
+        }
+    }
+
+
+}

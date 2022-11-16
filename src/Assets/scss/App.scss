@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+@import './cores/variables';
+@import './cores/base';
+@import './cores/typography';
+@import './cores/breakpoints';
+
+@import './sections/MainMenu';
+@import './sections/Showcase';
+@import './sections/Footer';
+@import './sections/NotFound';
+@import './sections/OurSpeciality';
+@import './sections/ServiceSection';
+@import './sections/FlashSale';
+@import './sections/ProductGrid';
+@import './sections/ContactForm';
+@import './sections/Breadcrumb';
+@import './sections/Map';
+@import './sections/ProductDetails';
+@import './sections/ShoppingCart';
+@import './sections/Jumbotron';
+
+@import './components/buttons';
+@import './components/menuIcon';
+@import './components/productCard';
+@import './components/tabs';
