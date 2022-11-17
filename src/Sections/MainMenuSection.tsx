@@ -3,6 +3,9 @@ import { NavLink } from "react-router-dom";
 import MenuIcon from "../Components/MenuIcon";
 import { useShoppingCart } from "../Contexts/ShoppingCartContext";
 
+
+
+
 const MainMenuSection = () => {
   const { cartQuantity } = useShoppingCart();
 
@@ -45,12 +48,11 @@ const MainMenuSection = () => {
         </ul>
 
         <div className='main-menu-icons'>
-          <MenuIcon link='/search' icon='fa-regular fa-magnifying-glass' />
+          <MenuIcon link='/search' icon='fa-regular fa-magnifying-glass' quantity={null} hideMobile={""} />
           <MenuIcon
             hideMobile='true'
             link='/compare'
-            icon='fa-regular fa-code-compare'
-          />
+            icon='fa-regular fa-code-compare' quantity={null}          />
           <MenuIcon
             hideMobile='true'
             quantity={null}

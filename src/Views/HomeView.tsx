@@ -13,29 +13,29 @@ import { useProductContext } from "../Contexts/ProductContext";
 import { useEffect } from "react";
 
 const HomeView = () => {
-  const { featuredProducts, getFeaturedProducts } = useProductContext();
+	const { featuredProducts, getFeaturedProducts } = useProductContext();
 
-  /* window title  */
-  // window.top.document.title = "Home | Fixxo";
+	/* window title  */
 
-  useEffect(() => {
-    getFeaturedProducts(8);
-  }, []);
 
-  return (
-    <>
-      <MainMenuSection />
-      <ShowcaseSection />
-      <Jumbotron1Section />
-      <ProductGridSection title='Featured Products' items={featuredProducts} />
-      <Jumbotron2Section />
-      <OurSpecialitySection />
-      <FlashSaleSection1 />
-      <FlashSaleSection2 />
-      <FlashSaleSection3 />
-      <ServiceSection />
-      <FooterSection />
-    </>
-  );
+	useEffect(() => {
+		getFeaturedProducts(8);
+	}, []);
+
+	return (
+		<>
+			<MainMenuSection />
+			<ShowcaseSection />
+			<Jumbotron1Section />
+			<ProductGridSection title='Featured Products' items={featuredProducts} />
+			<Jumbotron2Section />
+			<OurSpecialitySection />
+			<FlashSaleSection1 />
+			<FlashSaleSection2 />
+			<FlashSaleSection3 />
+			<ServiceSection />
+			<FooterSection />
+		</>
+	);
 };
 export default HomeView;

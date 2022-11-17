@@ -4,11 +4,10 @@ import MainMenuSection from "../Sections/MainMenuSection";
 import ProductGridSection from "../Sections/ProductGridSection";
 import { useProductContext } from "../Contexts/ProductContext";
 import { useEffect } from "react";
-const ProductsView = ({ title }) => {
+const ProductsView = ({title}: {title:string}) => {
   const { products, getProducts } = useProductContext();
 
-  /* window title  */
-  window.top.document.title = "Product | Fixxo";
+
 
   useEffect(() => {
     getProducts();
@@ -17,7 +16,7 @@ const ProductsView = ({ title }) => {
   return (
     <>
       <MainMenuSection />
-      <ProductGridSection title='Products' items={products} />
+      <ProductGridSection title={title} items={products} />
       <FooterSection />
     </>
   );

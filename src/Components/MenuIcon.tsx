@@ -1,6 +1,13 @@
 import { NavLink } from "react-router-dom";
 
-const MenuIcon = ({ link, icon, quantity, hideMobile }) => {
+interface IMenuIcons {
+  link: string,
+  icon: string,
+  quantity: number | null,
+  hideMobile: string
+}
+
+const MenuIcon = ({ link, icon, quantity, hideMobile }:IMenuIcons) => {
   return (
     <NavLink
       className={`menu-icon ${hideMobile ? "hidden" : ""}`}

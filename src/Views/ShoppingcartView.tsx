@@ -1,9 +1,7 @@
 import { FooterSection } from "../Sections/FooterSection";
 import MainMenuSection from "../Sections/MainMenuSection";
+const ShoppingcartView = () => {
 
-const CategoriesView = () => {
-  /* window title  */
-  window.top.document.title = "Categories | Fixxo";
 
   return (
     <>
@@ -12,4 +10,4 @@ const CategoriesView = () => {
     </>
   );
 };
-export default CategoriesView;
+export default ShoppingcartView;

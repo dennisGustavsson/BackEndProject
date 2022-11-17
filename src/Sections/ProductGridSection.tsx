@@ -1,6 +1,8 @@
 import ProductCard from "../Components/ProductCard";
 
-const ProductGridSection = ({ title, items = [] }) => {
+
+
+const ProductGridSection = ({ title, items = [] }:{title:string, items: any[]}) => {
   return (
     <section className='grid-section'>
       <div className='container'>

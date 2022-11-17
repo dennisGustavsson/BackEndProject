@@ -1,4 +1,12 @@
-export const submitData = async (data) => {
+import { Errors } from "../../Models/formModel";
+
+interface Form {
+  name: string
+  email: string
+  comments: string
+}
+
+export const submitData = async (data:string) => {
   const res = await fetch(
     "https://win22-webapi.azurewebsites.net/api/contactform",
     {
@@ -23,28 +31,28 @@ const regexEmail =
 const regexName = /^(?=.{2,50}$)[a-z]+(?:['-\s][a-z]+)*$/i;
 
 //function that takes event and a form variable
-export const validation = (e, form = null) => {
-  if (e.type === "submit") {
-    const errors = {};
-    errors.name = validateName(form.name);
-    errors.email = validateEmail(form.email);
-    errors.comments = validateComment(form.comments);
-    return errors;
-  } else {
-    const { id, value } = e.target;
-    switch (id) {
-      case "name":
-        return validateName(value);
-      case "email":
-        return validateEmail(value);
-      case "comments":
-        return validateComment(value);
-    }
-  }
+export const validation = (e: any, form?:any) => {
+	if (e.type === "submit") {
+		const errors:any = {};
+		errors.name = validateName(form.name);
+		errors.email = validateEmail(form.email);
+		errors.comments = validateComment(form.comments);
+		return errors;
+	} else {
+		const { id, value } = e.target;
+		switch (id) {
+			case "name":
+				return validateName(value);
+			case "email":
+				return validateEmail(value);
+			case "comments":
+				return validateComment(value);
+		}
+	}
 };
 
 //checks input name
-const validateName = (value) => {
+const validateName = (value:string) => {
   if (!value) {
     return "Name is required";
   } else if (!regexName.test(value)) {
@@ -55,7 +63,7 @@ const validateName = (value) => {
 };
 
 //checks input email
-const validateEmail = (value) => {
+const validateEmail = (value:string) => {
   if (!value) {
     //if no value entered
     return "An email is required";
@@ -67,7 +75,7 @@ const validateEmail = (value) => {
   }
 };
 // checks input comment
-const validateComment = (value) => {
+const validateComment = (value:string) => {
   let charsReq = 20;
   let charsleft = charsReq - value.length;
   if (!value) {

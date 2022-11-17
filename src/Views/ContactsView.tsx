@@ -3,8 +3,7 @@ import MainMenuSection from "../Sections/MainMenuSection";
 import BreadcrumbSection from "../Sections/BreadcrumbSection";
 import ContactFormSection from "../Sections/ContactFormSection";
 const ContactsView = () => {
-  /* window title  */
-  // window.top.document.title = "Contacts | Fixxo";
+
 
   return (
     <>

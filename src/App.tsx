@@ -21,7 +21,7 @@ function App() {
           <Routes>
             <Route path='/' element={<HomeView />} />
             <Route path='/categories' element={<CategoriesView />} />
-            <Route path='/products' element={<ProductsView title={undefined} />} />
+            <Route path='/products' element={<ProductsView title='Products' />} />
             <Route path='/products/:id' element={<ProductDetailsView />} />
             <Route path='/contacts' element={<ContactsView />} />
             <Route path='/search' element={<SearchView />} />
@@ -37,3 +37,31 @@ function App() {
 }
 
 export default App;
+
+
+
+
+/* 
+
+interface IShoppingCart {
+  increment: (articleNumber:string) => void
+  decrement: (articleNumber:string) => void
+  remove: (articleNumber:string) => never
+  totalAmount: () => number
+  totalQuantity: () => number
+}
+
+interface IProductItem {
+  articleNumber: string,
+  name: string,
+  desription?: string,
+  price: number
+}
+
+interface ICartItem {
+  articleNumber: string,
+  item: IProductItem,
+  quantity: number
+}
+
+*/
