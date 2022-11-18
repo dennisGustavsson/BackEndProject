@@ -1,3 +1,4 @@
+import { Key } from "react";
 import { useShoppingCart } from "../Contexts/ShoppingCartContext";
 import ShoppingCartItem from "./ShoppingCartItem";
 const ShoppingCart = () => {
@@ -6,7 +7,7 @@ const ShoppingCart = () => {
     <>
       <div
         className='shoppingcart offcanvas offcanvas-end'
-        tabIndex='-1'
+        tabIndex={-1}
         id='shoppingCart'
         aria-labelledby='shoppingCartLabel'
       >
@@ -22,7 +23,7 @@ const ShoppingCart = () => {
           ></button>
         </div>
         <div className='offcanvas-body'>
-          {cartItems.map((item) => (
+          {cartItems.map((item: { articleNumber: Key | null | undefined; }) => (
             <ShoppingCartItem key={item.articleNumber} item={item} />
           ))}
         </div>
