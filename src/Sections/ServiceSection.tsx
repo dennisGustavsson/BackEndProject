@@ -1,7 +1,7 @@
 import customerService from "../Assets/images/icons/customer-service.svg";
 import creditCard from "../Assets/images/icons/credit-card.svg";
 import deliveryTruck from "../Assets/images/icons/delivery-truck.svg";
-const ServiceSection: React.FC = () => {
+const ServiceSection = () => {
 	return (
 		<section className='services'>
 			<div className='container'>

@@ -8,11 +8,16 @@ const TabsMenu = () => {
   //states to toggle which tab is active on Product Details
   const [activeTab, setActiveTab] = useState("tab1");
 
-  const handleToggle = (e) => {
-    let toggler = e.target.id;
+  // const handleToggle = (e) => {
+	// 	let toggler = e.target.id;
 
-    setActiveTab(toggler);
-  };
+	// 	setActiveTab(toggler);
+	// };
+
+  const handleToggle = (e: React.MouseEvent<HTMLElement>) => {
+		let toggler = (e.target as Element).id;
+		setActiveTab(toggler);
+	};
 
   return (
     <div className='container'>

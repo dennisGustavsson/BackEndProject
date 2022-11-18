@@ -17,7 +17,7 @@ const FlashSaleSection3 = () => {
           <div className='flash-advert'>
             <h2>UP TO 70% OFF*</h2>
             <h4>Women's, Men's & Kids Winter Fashion</h4>
-            <NavLink className='btn-theme btn-theme-white'>Flash Sale</NavLink>
+            <NavLink to="/"className='btn-theme btn-theme-white'>Flash Sale</NavLink>
           </div>
           <div className='product-grid-col'>
             <ProductGridSection

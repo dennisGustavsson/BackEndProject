@@ -16,9 +16,9 @@ const FlashSaleSection1 = () => {
         <div className='flash-grid'>
           <div className='flash-advert'>
             <h2>2 FOR $29.00</h2>
-            <NavLink className='btn-theme btn-theme-white'>Flash Sale</NavLink>
+            <NavLink to="/" className='btn-theme btn-theme-white'>Flash Sale</NavLink>
           </div>
-          <ProductGridSection items={flashProducts} />
+          <ProductGridSection items={flashProducts} title={""} />
         </div>
       </section>
     </>

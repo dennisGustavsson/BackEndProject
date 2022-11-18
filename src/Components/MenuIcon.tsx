@@ -7,7 +7,7 @@ interface IMenuIcons {
   hideMobile: string
 }
 
-const MenuIcon = ({ link, icon, quantity, hideMobile }:IMenuIcons) => {
+const MenuIcon: React.FC<IMenuIcons> = ({ link, icon, quantity, hideMobile }) => {
   return (
     <NavLink
       className={`menu-icon ${hideMobile ? "hidden" : ""}`}

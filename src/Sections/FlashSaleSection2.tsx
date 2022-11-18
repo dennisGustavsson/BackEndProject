@@ -13,10 +13,10 @@ const FlashSaleSection2 = () => {
     <>
       <section className='flash-sale flexEnd'>
         <div className='flash-grid reverse-grid'>
-          <ProductGridSection items={flashProducts} />
+          <ProductGridSection items={flashProducts} title={""} />
           <div className='flash-advert'>
             <h2>2 FOR $49.00</h2>
-            <NavLink className='btn-theme btn-theme-white'>Flash Sale</NavLink>
+            <NavLink to="/" className='btn-theme btn-theme-white'>Flash Sale</NavLink>
           </div>
           <div className='product-grid grid-end'></div>
         </div>

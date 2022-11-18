@@ -2,11 +2,11 @@ import leftShowcase from "../Assets/images/img-2.svg";
 import rightShowcase from "../Assets/images/img-1.svg";
 import { NavLink } from "react-router-dom";
 
-const ShowcaseSection: React.FC = () => {
+const ShowcaseSection = () => {
 	return (
 		<nav className='showcase'>
 			<div className='showcaseWrap'>
-				<img src={leftShowcase} />
+				<img src={leftShowcase} alt='placeholder' />
 				<div className='showcase-items'>
 					<h2>
 						sale up to 50% off
@@ -16,7 +16,7 @@ const ShowcaseSection: React.FC = () => {
 						Shop now
 					</NavLink>
 				</div>
-				<img id='hide-img' src={rightShowcase} alt='placeholder image' />
+				<img id='hide-img' src={rightShowcase} alt='placeholder' />
 			</div>
 		</nav>
 	);

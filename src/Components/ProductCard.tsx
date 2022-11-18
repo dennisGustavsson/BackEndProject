@@ -1,8 +1,13 @@
 import { NavLink } from "react-router-dom";
 import { currencyFormatter } from "../Assets/Scripts/CurrencyFormatter";
 import { useShoppingCart } from "../Contexts/ShoppingCartContext";
+import { Product } from "../Models/productModel";
 
-const ProductCard = ({ item }) => {
+interface Item {
+  item: Product
+}
+
+const ProductCard: React.FC<Item> = ({ item }) => {
   //adds a product to shoppingcart
   const { incrementQuantity } = useShoppingCart();
   //star rating variable
@@ -15,13 +20,13 @@ const ProductCard = ({ item }) => {
           <div className='product-img'>
             <img src={item.imageName} alt={item.name} />
             <div className='card-menu'>
-              <button className='menu-icon' to='/wishlist'>
+              <NavLink className='menu-icon' to='/wishlist'>
                 <i className='fa-regular fa-heart'></i>
-              </button>
-              <button className='menu-icon' to='/compare'>
+              </NavLink>
+              <NavLink className='menu-icon' to='/compare'>
                 <i className='fa-regular fa-code-compare'></i>
-              </button>
-              <button
+              </NavLink>
+              <NavLink
                 onClick={() =>
                   incrementQuantity({
                     articleNumber: item.articleNumber,
@@ -32,7 +37,7 @@ const ProductCard = ({ item }) => {
                 to='shoppingcart'
               >
                 <i className='fa-regular fa-shopping-bag'></i>
-              </button>
+              </NavLink>
             </div>
             <NavLink
               to={`/products/${item.articleNumber
