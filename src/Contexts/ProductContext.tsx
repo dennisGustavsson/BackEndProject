@@ -1,14 +1,17 @@
 import { useContext, useState } from "react";
 import { createContext } from "react";
-
-const ProductContext = createContext();
+import { IProductContext } from "../Models/productModel";
+import { ProductProviderProps } from "../Models/productModel";
 
 //custom state
 export const useProductContext = () => {
   return useContext(ProductContext);
 };
 
-export const ProductProvider = ({ children }) => {
+export const ProductContext = createContext<IProductContext | null>(null)
+
+
+export const ProductProvider = ({ children }:ProductProviderProps) => {
   const url = "https://win22-webapi.azurewebsites.net/api/products";
 
   // for product details
@@ -44,7 +47,7 @@ export const ProductProvider = ({ children }) => {
   };
 
   //fetches product from articleNumber to product details
-  const getProduct = async (articleNumber) => {
+  const getProduct = async (articleNumber:string) => {
     const result = await fetch(url + `/${articleNumber}`);
     setProduct(await result.json());
   };

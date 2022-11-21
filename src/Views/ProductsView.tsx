@@ -5,7 +5,7 @@ import ProductGridSection from "../Sections/ProductGridSection";
 import { useProductContext } from "../Contexts/ProductContext";
 import { useEffect } from "react";
 const ProductsView = ({title}: {title:string}) => {
-  const { products, getProducts } = useProductContext();
+  const { products, getProducts }:any = useProductContext();
 
 
 

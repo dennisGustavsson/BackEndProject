@@ -6,9 +6,10 @@ import ProductDetailsSection from "../Sections/ProductDetailsSection";
 import { useProductContext } from "../Contexts/ProductContext";
 import { useEffect } from "react";
 
+
 const ProductDetailsView = () => {
   const { id } = useParams();
-  const { product, getProduct } = useProductContext();
+  const { product, getProduct }:any = useProductContext();
 
   useEffect(() => {
     getProduct(id);

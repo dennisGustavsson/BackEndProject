@@ -16,7 +16,7 @@ const ProductDetailsSection: React.FC<Item> = ({ item }) => {
 	// variable for star-rating
 	const ratingAmount: number = item.rating;
 
-	const { flashProducts, getFlashProducts } = useProductContext();
+	const { flashProducts, getFlashProducts }:any = useProductContext();
 	useEffect(() => {
 		getFlashProducts(4);
 	}, []);
