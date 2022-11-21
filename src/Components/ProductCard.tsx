@@ -1,15 +1,15 @@
 import { NavLink } from "react-router-dom";
 import { currencyFormatter } from "../Assets/Scripts/CurrencyFormatter";
 import { useShoppingCart } from "../Contexts/ShoppingCartContext";
-import { Product } from "../Models/productModel";
+import { IProduct } from "../Models/productModel";
 
 interface Item {
-  item: Product
+  item: IProduct
 }
 
 const ProductCard: React.FC<Item> = ({ item }) => {
   //adds a product to shoppingcart
-  const { incrementQuantity } = useShoppingCart();
+  const { incrementQuantity }:any = useShoppingCart();
   //star rating variable
   const ratingAmount = item.rating;
 
@@ -34,7 +34,7 @@ const ProductCard: React.FC<Item> = ({ item }) => {
                   })
                 }
                 className='menu-icon'
-                to='shoppingcart'
+                to='/'
               >
                 <i className='fa-regular fa-shopping-bag'></i>
               </NavLink>

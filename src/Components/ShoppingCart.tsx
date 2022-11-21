@@ -2,7 +2,7 @@ import { Key } from "react";
 import { useShoppingCart } from "../Contexts/ShoppingCartContext";
 import ShoppingCartItem from "./ShoppingCartItem";
 const ShoppingCart = () => {
-  const { cartItems } = useShoppingCart();
+  const { cartItems }:any = useShoppingCart();
   return (
     <>
       <div

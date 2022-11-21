@@ -1,12 +1,12 @@
 import ProductCard from "../Components/ProductCard";
-import { Product } from "../Models/productModel";
+import { IProduct } from "../Models/productModel";
 
 const ProductGridSection = ({
 	title,
 	items = [],
 }: {
 	title: string;
-	items: Product[];
+	items: IProduct[];
 }) => {
 	return (
 		<section className='grid-section'>

@@ -1,10 +1,12 @@
 import { currencyFormatter } from "../Assets/Scripts/CurrencyFormatter";
 import { useShoppingCart } from "../Contexts/ShoppingCartContext";
 
-const ShoppingCartItem = ({ item }) => {
+
+
+const ShoppingCartItem = ({ item }:any) => {
 
   //from shoppingcartContext, for adding and removal from cart
-  const { incrementQuantity, decrementQuantity, removeItem } =
+  const { incrementQuantity, decrementQuantity, removeItem }:any =
     useShoppingCart();
   return (
     <div className='shoppingcart-item'>

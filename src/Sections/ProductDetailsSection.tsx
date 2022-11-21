@@ -6,10 +6,10 @@ import ProductGridSection from "./ProductGridSection";
 import { currencyFormatter } from "../Assets/Scripts/CurrencyFormatter";
 import { useProductContext } from "../Contexts/ProductContext";
 import { useEffect } from "react";
-import { Product } from "../Models/productModel";
+import { IProduct } from "../Models/productModel";
 
 interface Item {
-	item: Product;
+	item: IProduct;
 }
 
 const ProductDetailsSection: React.FC<Item> = ({ item }) => {

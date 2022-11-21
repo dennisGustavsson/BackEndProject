@@ -7,7 +7,7 @@ import { useShoppingCart } from "../Contexts/ShoppingCartContext";
 
 
 const MainMenuSection = () => {
-  const { cartQuantity } = useShoppingCart();
+  const { cartQuantity }:any = useShoppingCart();
 
   const [showMenu, setShowMenu] = useState(false);
 

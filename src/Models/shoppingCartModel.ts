@@ -1,5 +1,7 @@
-export interface ShoppingCartItem {
+import { IProduct } from "./productModel"
+
+export interface IShoppingCartItem {
 articleNumber: string
 quantity: number
-item?: string
+item?: IProduct[]
 }
