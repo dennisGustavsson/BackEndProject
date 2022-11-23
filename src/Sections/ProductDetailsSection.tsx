@@ -6,7 +6,7 @@ import ProductGridSection from "./ProductGridSection";
 import { currencyFormatter } from "../Assets/Scripts/CurrencyFormatter";
 import { useProductContext } from "../Contexts/ProductContext";
 import { useEffect } from "react";
-import { IProduct } from "../Models/productModel";
+import { IProduct } from "../Models/productModels";
 
 interface Item {
 	item: IProduct;
@@ -16,7 +16,7 @@ const ProductDetailsSection: React.FC<Item> = ({ item }) => {
 	// variable for star-rating
 	const ratingAmount: number = item.rating;
 
-	const { flashProducts, getFlashProducts }:any = useProductContext();
+	const { flashProducts, getFlashProducts }: any = useProductContext();
 	useEffect(() => {
 		getFlashProducts(4);
 	}, []);

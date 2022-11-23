@@ -1,6 +1,6 @@
 import React from "react";
 import ShoppingCart from "../Components/ShoppingCart";
-import { IProduct } from "../Models/productModel";
+import { IProduct } from "../Models/productModels";
 import { useState } from "react";
 import { useContext } from "react";
 //  models
@@ -28,14 +28,11 @@ interface ShoppingCartProviderProps {
 
 // contexts
 
-const { createContext/* , useContext, useState  */} = require("react");
+const { createContext /* , useContext, useState  */ } = require("react");
 
 //  const ShoppingCartContext = createContext<IShoppingCartContext | null>(null);
 
-
 const ShoppingCartContext = createContext({} as IShoppingCartContext);
-
-
 
 export const useShoppingCart = () => {
 	return useContext(ShoppingCartContext);
@@ -44,7 +41,7 @@ export const useShoppingCart = () => {
 // - - - - - - - - - - PROVIDER - - - - - - - - -
 
 export const ShoppingCartProvider = ({
-	children
+	children,
 }: ShoppingCartProviderProps) => {
 	const [cartItems, setCartItems] = useState<CartItemProp[]>([]);
 
@@ -53,7 +50,7 @@ export const ShoppingCartProvider = ({
 		return item.quantity + quantity;
 	}, 0);
 
-	const getItemQuantity = (articleNumber:string) => {
+	const getItemQuantity = (articleNumber: string) => {
 		return (
 			cartItems.find((item) => item.articleNumber === articleNumber)
 				?.quantity || 0
@@ -62,7 +59,7 @@ export const ShoppingCartProvider = ({
 
 	//Adds one to shoppingcart
 
-	const incrementQuantity = (cartItem:any) => {
+	const incrementQuantity = (cartItem: any) => {
 		const { articleNumber, product } = cartItem;
 
 		setCartItems((items) => {
@@ -82,7 +79,7 @@ export const ShoppingCartProvider = ({
 
 	//Removes one from shoppingcart
 
-	const decrementQuantity = (cartItem:any) => {
+	const decrementQuantity = (cartItem: any) => {
 		const { articleNumber } = cartItem;
 
 		setCartItems((items) => {
@@ -105,7 +102,7 @@ export const ShoppingCartProvider = ({
 
 	//removes all of one article from shoppingcart
 
-	const removeItem = (articleNumber:string) => {
+	const removeItem = (articleNumber: string) => {
 		setCartItems((items) => {
 			return items.filter((item) => item.articleNumber !== articleNumber);
 		});

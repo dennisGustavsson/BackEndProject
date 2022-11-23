@@ -1,7 +1,7 @@
-import { IProduct } from "./productModel"
+import { IProduct } from "./productModels";
 
 export interface IShoppingCartItem {
-articleNumber: string
-quantity: number
-item?: IProduct[]
+	articleNumber: string;
+	quantity: number;
+	item?: IProduct[];
 }

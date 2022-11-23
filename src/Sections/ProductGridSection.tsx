@@ -1,5 +1,5 @@
 import ProductCard from "../Components/ProductCard";
-import { IProduct } from "../Models/productModel";
+import { IProduct } from "../Models/productModels";
 
 const ProductGridSection = ({
 	title,
