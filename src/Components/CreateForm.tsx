@@ -38,6 +38,15 @@ const CreateForm = () => {
 					type='text'
 					placeholder='Enter your email...'
 				/>
+				<input
+					id='reqPassword'
+					value={userRequest.password}
+					onChange={(e) =>
+						setUserRequest({ ...userRequest, password: e.target.value })
+					}
+					type='password'
+					placeholder='Enter your password'
+				/>
 				{/* <label htmlFor='reqEmail'>Email</label> */}
 				<button type='submit' className='btn-theme'>
 					Create User

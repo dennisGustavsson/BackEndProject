@@ -12,7 +12,7 @@ export interface IUserContext {
 	create: (e: React.FormEvent) => void;
 	get: (id: number) => void;
 	getAll: () => void;
-	update: (id: number, e: React.FormEvent) => void;
+	update: ( e: React.FormEvent) => void;
 	remove: (id: number) => void;
 }
 
@@ -52,7 +52,7 @@ const UserProvider = ({ children }: UserProviderProps) => {
 		const result = await fetch(`${baseUrl}`, {
 			method: "post",
 			headers: {
-				"Content-Type": "application/json",
+				"Content-Type": "application/json"
 			},
 			body: JSON.stringify(userRequest),
 		});
@@ -74,10 +74,10 @@ const UserProvider = ({ children }: UserProviderProps) => {
 	};
 
 	//! update a specific user with id
-	const update = async (id: number, e: React.FormEvent) => {
+	const update = async (e: React.FormEvent) => {
 		e.preventDefault();
 
-		const result = await fetch(`${baseUrl}/${id}`, {
+		const result = await fetch(`${baseUrl}/${user.id}`, {
 			method: "put",
 			headers: {
 				"Content-Type": "application/json",
