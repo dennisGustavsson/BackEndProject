@@ -7,7 +7,7 @@ const CreateForm = () => {
 	) as IUserContext;
 	return (
 		<>
-			<h3> Create User</h3>
+			<h3> Create Product</h3>
 			<form onSubmit={create} className='form-theme'>
 				<input
 					id='reqFirstName'
@@ -49,7 +49,7 @@ const CreateForm = () => {
 				/>
 				{/* <label htmlFor='reqEmail'>Email</label> */}
 				<button type='submit' className='btn-theme'>
-					Create User
+					Create Product
 				</button>
 			</form>
 		</>

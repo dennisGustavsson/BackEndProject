@@ -8,7 +8,7 @@ const ContactsView = () => {
   return (
     <>
       <MainMenuSection />
-      <BreadcrumbSection currentPage='Contacts' />
+      <BreadcrumbSection currentPage='Contacts' prevPage='Home' />
       <iframe
         className='map google-map'
         title='google-map'

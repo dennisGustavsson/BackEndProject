@@ -23,7 +23,7 @@ const ProductDetailsView = () => {
           <span>Get 25% OFF at the Fixxo Selection - Shop Now!</span>
         </div>
       </div>
-      <BreadcrumbSection currentPage={product.name} />
+      <BreadcrumbSection currentPage={product.name} prevPage={'/'} />
       <ProductDetailsSection item={product} />
       <FooterSection />
     </>

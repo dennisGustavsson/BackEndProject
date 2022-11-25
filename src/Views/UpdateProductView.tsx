@@ -4,22 +4,18 @@ import UpdateForm from "../Components/UpdateForm";
 import { FooterSection } from "../Sections/FooterSection";
 import MainMenuSection from "../Sections/MainMenuSection";
 
-const ProductManagerView = () => {
+const UpdateProductView = () => {
 	return (
 		<>
 			<MainMenuSection />
 			<section className='productManager'>
 				<div className='container'>
-					<CreateForm />
-					<hr className="my-5"/>
-					<ProductList />
 					<UpdateForm />
-
-
+					<ProductList />
 				</div>
 			</section>
 			<FooterSection />
 		</>
 	);
 };
-export default ProductManagerView;
+export default UpdateProductView;

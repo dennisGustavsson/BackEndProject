@@ -12,8 +12,9 @@ import ShoppingcartView from "./Views/ShoppingcartView";
 import NotFoundView from "./Views/NotFoundView";
 import { ProductProvider } from "./Contexts/ProductContext";
 import { ShoppingCartProvider } from "./Contexts/ShoppingCartContext";
-import ProductManagerView from "./Views/ProductManagerView";
 import UserProvider from "./Contexts/UserContext";
+import CreateProductView from "./Views/CreateProductView";
+import UpdateProductView from "./Views/UpdateProductView";
 
 function App() {
 	return (
@@ -29,7 +30,8 @@ function App() {
 								element={<ProductsView title='Products' />}
 							/>
 							<Route path='/products/:id' element={<ProductDetailsView />} />
-							<Route path='/productmanager' element={<ProductManagerView />} />
+							<Route path='/createproduct' element={<CreateProductView />} />
+							<Route path='/updateproduct/:id' element={<UpdateProductView />} />
 							<Route path='/contacts' element={<ContactsView />} />
 							<Route path='/search' element={<SearchView />} />
 							<Route path='/compare' element={<CompareView />} />
