@@ -1,7 +1,8 @@
 import { Errors } from "../../Models/formModel";
 
-interface Form {
-  name: string
+
+export interface Form {
+  name: string 
   email: string
   comments: string
 }
@@ -26,12 +27,14 @@ export const submitData = async (data:string) => {
 };
 
 //regex for name and email inputs
-const regexEmail =
+const regexEmail: RegExp =
   /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-const regexName = /^(?=.{2,50}$)[a-z]+(?:['-\s][a-z]+)*$/i;
+const regexName:RegExp = /^(?=.{2,50}$)[a-z]+(?:['-\s][a-z]+)*$/i;
 
 //function that takes event and a form variable
-export const validation = (e: any, form?:any) => {
+export const validation = (e: React.ChangeEvent<HTMLTextAreaElement> | React.ChangeEvent<HTMLInputElement>,
+	form: Form
+) => {
 	if (e.type === "submit") {
 		const errors:any = {};
 		errors.name = validateName(form.name);

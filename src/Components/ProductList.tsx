@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import { User } from "../Models/userModels";
 import { NavLink } from "react-router-dom";
 
-const ProductList = () => {
+const ProductList: React.FC = () => {
 	const { users, getAll, remove } = React.useContext(UserContext) as IUserContext;
 
 	//! for every new render, useEffect will fetch all users from the list and render to page

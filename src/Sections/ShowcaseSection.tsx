@@ -2,7 +2,7 @@ import leftShowcase from "../Assets/images/img-2.svg";
 import rightShowcase from "../Assets/images/img-1.svg";
 import { NavLink } from "react-router-dom";
 
-const ShowcaseSection = () => {
+const ShowcaseSection: React.FC = () => {
 	return (
 		<nav className='showcase'>
 			<div className='showcaseWrap'>

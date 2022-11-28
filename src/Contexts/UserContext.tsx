@@ -58,6 +58,10 @@ const UserProvider = ({ children }: UserProviderProps) => {
 		});
 		//! user was created without a problem
 		if (result.status === 201) setUserRequest(defaultUserRequestValues); // set default values to form again.
+		/* const _product = await result.json
+		setPRoduct(prev => { return
+		prevProd, _prudouctk
+	bör updatera}) */
 	};
 
 	//! Fetch a specific user from id.

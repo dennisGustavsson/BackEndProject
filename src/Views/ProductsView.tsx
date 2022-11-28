@@ -4,21 +4,25 @@ import MainMenuSection from "../Sections/MainMenuSection";
 import ProductGridSection from "../Sections/ProductGridSection";
 import { useProductContext } from "../Contexts/ProductContext";
 import { useEffect } from "react";
-const ProductsView = ({title}: {title:string}) => {
-  const { products, getProducts }:any = useProductContext();
+import { IProductContext } from "../Models/productModels";
 
+interface Props {
+	title: string;
+}
 
+const ProductsView: React.FC<Props> = ({ title }) => {
+	const { products, getProducts } = useProductContext() as IProductContext;
 
-  useEffect(() => {
-    getProducts();
-  }, []);
+	useEffect(() => {
+		getProducts();
+	}, []);
 
-  return (
-    <>
-      <MainMenuSection />
-      <ProductGridSection title={title} items={products} />
-      <FooterSection />
-    </>
-  );
+	return (
+		<>
+			<MainMenuSection />
+			<ProductGridSection title={title} items={products} />
+			<FooterSection />
+		</>
+	);
 };
 export default ProductsView;

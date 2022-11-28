@@ -1,21 +1,20 @@
-import { ReactNode } from "react"
+import { ReactNode } from "react";
 
 export interface IProductContext {
-	product: any
-	products: IProduct[]
-	featuredProducts: IProduct[]
-	flashProducts: IProduct[]
-	specialProducts: IProduct[]
-	getProduct: (articleNumber:any) => void
-	getProducts: () => void
-	getFeaturedProducts: (take: number) => void
-	getSpecialProducts: (take: number) => void
-	getFlashProducts: (take: number) => void
+	product: IProduct;
+	products: IProduct[];
+	featuredProducts: IProduct[];
+	flashProducts: IProduct[];
+	specialProducts: IProduct[];
+	getProduct: (articleNumber?: string) => void;
+	getProducts: () => void;
+	getFeaturedProducts: (take: number) => void;
+	getSpecialProducts: (take: number) => void;
+	getFlashProducts: (take: number) => void;
 }
 
-
 export interface IProductProviderProps {
-children: ReactNode
+	children: ReactNode;
 }
 
 export interface IProduct {
@@ -24,20 +23,17 @@ export interface IProduct {
 	description?: string;
 	category: string;
 	price: number;
-	rating: any;
+	rating: number;
 	imageName: string;
 }
 
-
 export interface IProductRequest {
-	name: string
-	description: string
-	category: string
-	price: number
+	name: string;
+	description: string;
+	category: string;
+	price: number;
 	// imageName?: string
 }
-
-
 
 /* 
 

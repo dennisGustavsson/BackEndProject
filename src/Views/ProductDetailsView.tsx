@@ -5,11 +5,12 @@ import BreadcrumbSection from "../Sections/BreadcrumbSection";
 import ProductDetailsSection from "../Sections/ProductDetailsSection";
 import { useProductContext } from "../Contexts/ProductContext";
 import { useEffect } from "react";
+import { IProductContext } from "../Models/productModels";
 
 
-const ProductDetailsView = () => {
-  const { id } = useParams();
-  const { product, getProduct }:any = useProductContext();
+const ProductDetailsView: React.FC = () => {
+  const { id } = useParams<string>();
+  const { product, getProduct } = useProductContext() as IProductContext;
 
   useEffect(() => {
     getProduct(id);

@@ -3,34 +3,28 @@ import ShoppingCart from "../Components/ShoppingCart";
 import { IProduct } from "../Models/productModels";
 import { useState } from "react";
 import { useContext } from "react";
+import { createContext } from "react";
 //  models
 
 export interface IShoppingCartContext {
 	cartItems: CartItemProp[];
 	cartQuantity: number;
-	incrementQuantity: (CartItemProp: any) => void;
-	decrementQuantity: (CartItemProp: any) => void;
-	getItemQuantity: (articleNumber: any) => void;
+	incrementQuantity: (cartItems: CartItemProp) => void;
+	decrementQuantity: (cartItems: CartItemProp) => void;
+	getItemQuantity: (articleNumber: string) => void;
 	removeItem: (articleNumber: string) => void;
 }
 
-interface CartItemProp {
+export interface CartItemProp {
 	articleNumber: string;
 	quantity: number;
-	// product: string;
-	item?: IProduct;
-	items?: IProduct[];
+	product: IProduct;
+
 }
 
 interface ShoppingCartProviderProps {
 	children: any;
 }
-
-// contexts
-
-const { createContext /* , useContext, useState  */ } = require("react");
-
-//  const ShoppingCartContext = createContext<IShoppingCartContext | null>(null);
 
 const ShoppingCartContext = createContext({} as IShoppingCartContext);
 
@@ -40,9 +34,9 @@ export const useShoppingCart = () => {
 
 // - - - - - - - - - - PROVIDER - - - - - - - - -
 
-export const ShoppingCartProvider = ({
+export const ShoppingCartProvider: React.FC<ShoppingCartProviderProps> = ({
 	children,
-}: ShoppingCartProviderProps) => {
+}) => {
 	const [cartItems, setCartItems] = useState<CartItemProp[]>([]);
 
 	// total quantity in shoppingbag
@@ -59,7 +53,7 @@ export const ShoppingCartProvider = ({
 
 	//Adds one to shoppingcart
 
-	const incrementQuantity = (cartItem: any) => {
+	const incrementQuantity = (cartItem: CartItemProp) => {
 		const { articleNumber, product } = cartItem;
 
 		setCartItems((items) => {
@@ -79,7 +73,7 @@ export const ShoppingCartProvider = ({
 
 	//Removes one from shoppingcart
 
-	const decrementQuantity = (cartItem: any) => {
+	const decrementQuantity = (cartItem: CartItemProp) => {
 		const { articleNumber } = cartItem;
 
 		setCartItems((items) => {

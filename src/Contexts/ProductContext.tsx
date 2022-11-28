@@ -14,10 +14,11 @@ const ProductContext = createContext<IProductContext | null>(null);
 //! - - - - - - - - - - PROVIDER - - - - - - - - - - 
 
 export const ProductProvider = ({ children }: IProductProviderProps) => {
-	const url = "https://win22-webapi.azurewebsites.net/api/products";
+	const url:string = "https://win22-webapi.azurewebsites.net/api/products";
 
 	// for product details
-	const [product, setProduct] = useState({});
+	const empty_product: IProduct = {articleNumber:'', name:'', category: '', price: 0, rating:0, imageName:''}
+	const [product, setProduct] = useState(empty_product);
 	//all products list
 	const [products, setProducts] = useState([]);
 	//featured products list
@@ -49,7 +50,7 @@ export const ProductProvider = ({ children }: IProductProviderProps) => {
 	};
 
 	//fetches product from articleNumber to product details
-	const getProduct = async (articleNumber: string) => {
+	const getProduct = async (articleNumber?: string) => {
 		const result = await fetch(url + `/${articleNumber}`);
 		setProduct(await result.json());
 	};

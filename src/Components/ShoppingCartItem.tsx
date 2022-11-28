@@ -1,13 +1,18 @@
+import { isMetaProperty } from "typescript";
 import { currencyFormatter } from "../Assets/Scripts/CurrencyFormatter";
-import { useShoppingCart } from "../Contexts/ShoppingCartContext";
+import { CartItemProp, IShoppingCartContext, useShoppingCart } from "../Contexts/ShoppingCartContext";
+import { IProduct } from "../Models/productModels";
+import { IShoppingCartItem } from "../Models/shoppingCartModel";
 
+interface Props {
+  item: CartItemProp;
+}
 
-
-const ShoppingCartItem = ({ item }:any) => {
+const ShoppingCartItem: React.FC<Props> = ({ item }) => {
 
   //from shoppingcartContext, for adding and removal from cart
-  const { incrementQuantity, decrementQuantity, removeItem }:any =
-    useShoppingCart();
+  const { incrementQuantity, decrementQuantity, removeItem } =
+    useShoppingCart() as IShoppingCartContext;
   return (
     <div className='shoppingcart-item'>
       <div className='item-img'>
