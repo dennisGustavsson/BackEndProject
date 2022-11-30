@@ -1,51 +1,72 @@
 import React from "react";
-import { IUserContext, UserContext } from "../Contexts/UserContext";
+import { IProductContext, UserContext } from "../Contexts/UserContext";
 
 const CreateForm = () => {
-	const { userRequest, setUserRequest, create } = React.useContext(
+	const { productRequest, setProductRequest, create } = React.useContext(
 		UserContext
-	) as IUserContext;
+	) as IProductContext;
 	return (
 		<>
 			<h3> Create Product</h3>
 			<form onSubmit={create} className='form-theme'>
 				<input
-					id='reqFirstName'
-					value={userRequest.firstName}
+					id='reqProductName'
+					value={productRequest.name}
 					onChange={(e) =>
-						setUserRequest({ ...userRequest, firstName: e.target.value })
+						setProductRequest({ ...productRequest, name: e.target.value })
 					}
 					type='text'
-					placeholder='Enter your first name...'
+					placeholder='Enter product name'
 				/>
 				{/* <label htmlFor='reqFirstName'>First Name</label> */}
 				<input
-					id='reqLastName'
-					value={userRequest.lastName}
+					id='reqCategory'
+					value={productRequest.category}
 					onChange={(e) =>
-						setUserRequest({ ...userRequest, lastName: e.target.value })
+						setProductRequest({ ...productRequest, category: e.target.value })
 					}
 					type='text'
-					placeholder='Enter your last name...'
+					placeholder='Enter category name'
 				/>
 				{/* <label htmlFor='reqLastName'>Last Name</label> */}
+
 				<input
-					id='reqEmail'
-					value={userRequest.email}
+					id='reqDescription'
+					value={productRequest.description}
 					onChange={(e) =>
-						setUserRequest({ ...userRequest, email: e.target.value })
+						setProductRequest({
+							...productRequest,
+							description: e.target.value,
+						})
 					}
 					type='text'
-					placeholder='Enter your email...'
+					placeholder='Enter description'
 				/>
 				<input
-					id='reqPassword'
-					value={userRequest.password}
+					id='reqPrice'
+					value={productRequest.price || ""}
 					onChange={(e) =>
-						setUserRequest({ ...userRequest, password: e.target.value })
+						setProductRequest({
+							...productRequest,
+							price: parseInt(e.target.value),
+						})
 					}
-					type='password'
-					placeholder='Enter your password'
+					type='number'
+					placeholder='Enter price'
+				/>
+				<input
+					id='reqRating'
+					value={productRequest.rating || ""}
+					onChange={(e) =>
+						setProductRequest({
+							...productRequest,
+							rating: parseInt(e.target.value),
+						})
+					}
+					type='number'
+					placeholder='Enter rating 1-5'
+					min="1"
+					max="5"
 				/>
 				{/* <label htmlFor='reqEmail'>Email</label> */}
 				<button type='submit' className='btn-theme'>

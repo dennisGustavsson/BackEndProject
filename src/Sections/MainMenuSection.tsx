@@ -45,6 +45,11 @@ const MainMenuSection: React.FC = () => {
 							Contacts
 						</NavLink>
 					</li>
+					<li>
+						<NavLink className='menu-link' to='/createproduct' end>
+							Manage
+						</NavLink>
+					</li>
 				</ul>
 
 				<div className='main-menu-icons'>

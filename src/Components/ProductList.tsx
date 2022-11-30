@@ -1,10 +1,13 @@
-import { IUserContext, UserContext } from "../Contexts/UserContext";
+import { IProductContext, UserContext } from "../Contexts/UserContext";
 import React, { useEffect } from "react";
-import { User } from "../Models/userModels";
 import { NavLink } from "react-router-dom";
+import { IProduct } from "../Models/productModels";
+import { currencyFormatter } from "../Assets/Scripts/CurrencyFormatter";
 
 const ProductList: React.FC = () => {
-	const { users, getAll, remove } = React.useContext(UserContext) as IUserContext;
+	const { products, getAll, remove } = React.useContext(
+		UserContext
+	) as IProductContext;
 
 	//! for every new render, useEffect will fetch all users from the list and render to page
 	useEffect(() => {
@@ -16,14 +19,35 @@ const ProductList: React.FC = () => {
 			<h3>List of Users</h3>
 			{
 				/* renders a user element for every user in list.. */
-				users.map((user: User) => (
+				products.map((product: IProduct) => (
 					<>
-						<div className="product-list" key={user.id}>
-							{user.firstName} {user.lastName} {user.email}
-							<NavLink className='btn-theme' to={`/updateproduct/${user.id}`}>
-								Update Product
-							</NavLink>
-							<button onClick={() => remove(user.id)}> Remove Product</button>
+						<div className='product-list' key={product.articleNumber}>
+							<h4>{product.name}</h4>
+							<h5>{product.category}</h5>
+							{currencyFormatter(product.price)}
+							<div>
+								{[...new Array(product.rating)].map((arr, index) => {
+									return index < product.rating ? (
+										<i className='fa-solid fa-star' key={index}></i>
+									) : null;
+								})}
+							</div>
+							<span>{product.description}</span>
+
+							<div className='d-flex justify-content-between'>
+								<NavLink
+									className='btn-theme'
+									to={`/updateproduct/${product.articleNumber}`}
+								>
+									Update Product
+								</NavLink>
+								<button
+									className='btn-theme btn-theme-dark'
+									onClick={() => remove(product.articleNumber)}
+								>
+									Remove Product
+								</button>
+							</div>
 						</div>
 					</>
 				))

@@ -17,7 +17,7 @@ export const ProductProvider = ({ children }: IProductProviderProps) => {
 	const url:string = "https://win22-webapi.azurewebsites.net/api/products";
 
 	// for product details
-	const empty_product: IProduct = {articleNumber:'', name:'', category: '', price: 0, rating:0, imageName:''}
+	const empty_product: IProduct = {articleNumber:0, name:'', category: '', price: 0, rating:0, imageName:''}
 	const [product, setProduct] = useState(empty_product);
 	//all products list
 	const [products, setProducts] = useState([]);

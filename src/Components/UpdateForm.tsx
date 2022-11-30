@@ -1,13 +1,14 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { IUserContext, UserContext } from "../Contexts/UserContext";
-import BreadcrumbSection from "../Sections/BreadcrumbSection";
+import { IProductContext, UserContext } from "../Contexts/UserContext";
+import { useNavigate } from "react-router-dom";
 
 const UpdateForm = () => {
 	const { id }:any = useParams()
-	const { user, setUser, update, get } = React.useContext(
+	let navigate = useNavigate();
+	const { product, setProduct, update, get } = React.useContext(
 		UserContext
-	) as IUserContext;
+	) as IProductContext;
 
 	useEffect(() => {
 			get(id);
@@ -15,35 +16,55 @@ const UpdateForm = () => {
 
 	return (
 		<>
-		{/* <BreadcrumbSection currentPage={`Update Product`} prevPage={'/'}/> */}
 			<h3> Update Product</h3>
 			<form onSubmit={update} className='form-theme'>
-				<input type='hidden' value={user.id} />
+				<input type='hidden' value={product.articleNumber} />
 				<input
-					id='reqFirstName'
-					value={user.firstName}
-					onChange={(e) => setUser({ ...user, firstName: e.target.value })}
+					id='ProductName'
+					value={product.name}
+					onChange={(e) => setProduct({ ...product, name: e.target.value })}
 					type='text'
-					placeholder={user.firstName}
+					placeholder={product.name || "Product Name"}
 				/>
-				{/* <label htmlFor='reqFirstName'>First Name</label> */}
 				<input
-					id='reqLastName'
-					value={user.lastName}
-					onChange={(e) => setUser({ ...user, lastName: e.target.value })}
+					id='Category'
+					value={product.category}
+					onChange={(e) => setProduct({ ...product, category: e.target.value })}
 					type='text'
-					placeholder={user.lastName}
+					placeholder={product.category || "Category"}
 				/>
-				{/* <label htmlFor='reqLastName'>Last Name</label> */}
 				<input
-					id='reqEmail'
-					value={user.email}
-					onChange={(e) => setUser({ ...user, email: e.target.value })}
+					id='Description'
+					value={product.description}
+					onChange={(e) =>
+						setProduct({ ...product, description: e.target.value })
+					}
 					type='text'
-					placeholder={user.email}
+					placeholder={product.description || "Description"}
 				/>
 
-				<button type='submit' className='btn-theme'>
+				<input
+					id='Price'
+					value={product.price}
+					onChange={(e) =>
+						setProduct({ ...product, price: parseInt(e.target.value) })
+					}
+					type='number'
+				/>
+				<input
+					id='Rating'
+					value={product.rating}
+					onChange={(e) =>
+						setProduct({ ...product, rating: parseInt(e.target.value) })
+					}
+					type='number'
+					min='1'
+					max='5'
+				/>
+
+
+
+				<button type='submit' className='btn-theme' onClick={(e)=> navigate(-1)}>
 					Update Product
 				</button>
 			</form>

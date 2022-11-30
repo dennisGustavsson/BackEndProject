@@ -17,40 +17,24 @@ export interface IProductProviderProps {
 	children: ReactNode;
 }
 
+//for updates
 export interface IProduct {
-	articleNumber: string;
+	articleNumber: number;
 	name: string;
 	description?: string;
 	category: string;
 	price: number;
 	rating: number;
-	imageName: string;
+	imageName?: string;
 }
 
+//new product
 export interface IProductRequest {
 	name: string;
 	description: string;
 	category: string;
 	price: number;
+	rating: number;
 	// imageName?: string
 }
 
-/* 
-
-interface User {
-	id
-	osv
-	osv osv
-}
-
-
-interface IUserContext
-	user: User
-	setUser: React.Dispatch<React.SetStateAction<User>>
-	users: User[]
-	create: (e: react.formevent) =>  void
-	get: (id:number) => void
-	getAll () => void
-	update: (id:number, e:formevent) => void
-	delete: (id:number) => void
-*/

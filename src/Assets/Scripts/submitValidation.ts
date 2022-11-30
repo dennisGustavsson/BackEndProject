@@ -36,7 +36,7 @@ export const validation = (e: React.ChangeEvent<HTMLTextAreaElement> | React.Cha
 	form: Form
 ) => {
 	if (e.type === "submit") {
-		const errors:any = {};
+		const errors: any = {name:'', email:'', comments: ''};
 		errors.name = validateName(form.name);
 		errors.email = validateEmail(form.email);
 		errors.comments = validateComment(form.comments);

@@ -14,5 +14,30 @@
         h2 {
             padding-top: 4rem;
         }
+
+
+    }
+
+    .product-list {
+        display: flex;
+        flex-direction: column;
+        padding: 1rem;
+        border: 1px solid $color-gray-10;
+        width: 500px;
+
+
+
+        .btn-theme {
+            width: 100px;
+        }
+
+        .btn-theme-dark {
+            background-color: $color-gray-15;
+        }
+
+    }
+
+    h5 {
+        font-size: 1rem;
     }
 }

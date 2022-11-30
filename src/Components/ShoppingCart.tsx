@@ -28,7 +28,7 @@ const ShoppingCart: React.FC = () => {
 					{cartItems.map((item) => (
 						<ShoppingCartItem key={item.articleNumber} item={item} />
 					))}
-					;
+					
 				</div>
 			</div>
 		</>
