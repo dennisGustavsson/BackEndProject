@@ -16,9 +16,10 @@ const ProductDetailsSection: React.FC<Item> = ({ item }) => {
 	// variable for star-rating
 	const ratingAmount: number = item.rating;
 
-	const { flashProducts, getFlashProducts }: any = useProductContext();
+	console.log(item.articleNumber)
+	const { featuredProducts, getFeaturedProducts }: any = useProductContext();
 	useEffect(() => {
-		getFlashProducts(4);
+		getFeaturedProducts(4);
 	}, []);
 
 	//
@@ -79,10 +80,7 @@ const ProductDetailsSection: React.FC<Item> = ({ item }) => {
 							</div>
 							<span className='price'>{currencyFormatter(item.price)}</span>
 							<p className='details'>
-								Discovered had get considered projection who favourable.
-								Necessary up knowledge it tolerably. Unwilling departure
-								education is be dashwoods or an. Use off agreeable law unwilling
-								sir deficient curiosity instantly. (read more)
+{item.description}
 							</p>
 							<div className='product-form'>
 								<form>
@@ -232,7 +230,7 @@ const ProductDetailsSection: React.FC<Item> = ({ item }) => {
 						</div>
 					</div>
 					<TabsMenu />
-					<ProductGridSection title='Related Products' items={flashProducts} />
+					<ProductGridSection title='Related Products' items={featuredProducts} />
 				</div>
 			</div>
 		</>

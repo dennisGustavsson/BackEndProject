@@ -1,13 +1,13 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { IProductContext, UserContext } from "../Contexts/UserContext";
+import { IProductContext, ProductContext } from "../Contexts/ProductContext";
 import { useNavigate } from "react-router-dom";
 
 const UpdateForm = () => {
 	const { id }:any = useParams()
 	let navigate = useNavigate();
 	const { product, setProduct, update, get } = React.useContext(
-		UserContext
+		ProductContext
 	) as IProductContext;
 
 	useEffect(() => {

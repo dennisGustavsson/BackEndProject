@@ -1,9 +1,9 @@
 import React from "react";
-import { IProductContext, UserContext } from "../Contexts/UserContext";
+import { IProductContext, ProductContext } from "../Contexts/ProductContext";
 
 const CreateForm = () => {
 	const { productRequest, setProductRequest, create } = React.useContext(
-		UserContext
+		ProductContext
 	) as IProductContext;
 	return (
 		<>

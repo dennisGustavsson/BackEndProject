@@ -1,4 +1,4 @@
-import { IProductContext, UserContext } from "../Contexts/UserContext";
+import { IProductContext, ProductContext } from "../Contexts/ProductContext";
 import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { IProduct } from "../Models/productModels";
@@ -6,7 +6,7 @@ import { currencyFormatter } from "../Assets/Scripts/CurrencyFormatter";
 
 const ProductList: React.FC = () => {
 	const { products, getAll, remove } = React.useContext(
-		UserContext
+		ProductContext
 	) as IProductContext;
 
 	//! for every new render, useEffect will fetch all users from the list and render to page

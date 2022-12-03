@@ -2,13 +2,13 @@ import { NavLink } from "react-router-dom";
 import { useProductContext } from "../Contexts/ProductContext";
 import { useEffect } from "react";
 import ProductGridSection from "./ProductGridSection";
-import { IProductContext } from "../Models/productModels";
+import { IProductContext } from '../Contexts/ProductContext'
 
 const FlashSaleSection3: React.FC = () => {
-	const { specialProducts, getSpecialProducts } = useProductContext() as IProductContext;
+	const { featuredProducts, getFeaturedProducts } = useProductContext() as IProductContext;
 
 	useEffect(() => {
-		getSpecialProducts(3);
+		getFeaturedProducts(3);
 	}, []);
 
 	return (
@@ -25,15 +25,15 @@ const FlashSaleSection3: React.FC = () => {
 					<div className='product-grid-col'>
 						<ProductGridSection
 							title='Latest Product'
-							items={specialProducts}
+							items={featuredProducts}
 						/>
 						<ProductGridSection
 							title='Best Selling Product'
-							items={specialProducts}
+							items={featuredProducts}
 						/>
 						<ProductGridSection
 							title='Top Reacted Product'
-							items={specialProducts}
+							items={featuredProducts}
 						/>
 					</div>
 				</div>

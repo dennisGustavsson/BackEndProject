@@ -12,14 +12,13 @@ import ShoppingcartView from "./Views/ShoppingcartView";
 import NotFoundView from "./Views/NotFoundView";
 import { ProductProvider } from "./Contexts/ProductContext";
 import { ShoppingCartProvider } from "./Contexts/ShoppingCartContext";
-import UserProvider from "./Contexts/UserContext";
 import CreateProductView from "./Views/CreateProductView";
 import UpdateProductView from "./Views/UpdateProductView";
 
 function App() {
 	return (
 		<BrowserRouter>
-			<UserProvider>
+
 				<ShoppingCartProvider>
 					<ProductProvider>
 						<Routes>
@@ -41,34 +40,9 @@ function App() {
 						</Routes>
 					</ProductProvider>
 				</ShoppingCartProvider>
-			</UserProvider>
+
 		</BrowserRouter>
 	);
 }
 
 export default App;
-
-/* 
-
-interface IShoppingCart {
-  increment: (articleNumber:string) => void
-  decrement: (articleNumber:string) => void
-  remove: (articleNumber:string) => never
-  totalAmount: () => number
-  totalQuantity: () => number
-}
-
-interface IProductItem {
-  articleNumber: string,
-  name: string,
-  desription?: string,
-  price: number
-}
-
-interface ICartItem {
-  articleNumber: string,
-  item: IProductItem,
-  quantity: number
-}
-
-*/
