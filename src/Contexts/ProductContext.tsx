@@ -12,11 +12,15 @@ export interface IProductContext {
 	productRequest: IProductRequest;
 	setProduct: React.Dispatch<React.SetStateAction<IProduct>>;
 	featuredProducts: IProduct[];
+	firstFlashProducts: IProduct[];
+	secondFlashProducts: IProduct[];
 	setProductRequest: React.Dispatch<React.SetStateAction<IProductRequest>>;
 	products: IProduct[];
 	create: (e: React.FormEvent) => void;
 	get: (articleNumber: string) => void;
-	getFeaturedProducts: (take: number) => void;
+	getFeaturedProducts: (tag:string, take: number) => void;
+	getFirstFlashProducts: (tag:string, take: number) => void;
+	getSecondFlashProducts: (tag:string, take: number) => void;
 	getAll: () => void;
 	update: (e: React.FormEvent) => void;
 	remove: (articleNumber: string|number) => void;
@@ -64,33 +68,11 @@ export const ProductProvider = ({ children }: IProductProviderProps) => {
 	// //featured products list
 	const [featuredProducts, setFeaturedProducts] = useState([]);
 	// //flashsale product list
-	// const [flashProducts, setFlashProducts] = useState([]);
+	const [firstFlashProducts, setFirstFlashProducts] = useState([]);
+	const [secondFlashProducts, setSecondFlashProducts] = useState([]);
 	// //bottom products
 	// const [specialProducts, setSpecialProducts] = useState([]);
 
-	//fetches products from API
-	//? const getProducts = async () => {
-	//? 	const result = await fetch(url);
-	//? 	setProducts(await result.json());
-	//? };
-
-	//fetches selected number of products from API from take-url
-
-	//? const getSpecialProducts = async (take = 0) => {
-	//? 	const result = await fetch(baseUrl + `?take=${take}`);
-	//? 	setSpecialProducts(await result.json());
-	//? };
-
-	//? const getFlashProducts = async (take = 0) => {
-	//? 	const result = await fetch(baseUrl + `?take=${take}`);
-	//? 	setFlashProducts(await result.json());
-	//? };
-
-	//fetches product from articleNumber to product details
-	//? const getProduct = async (articleNumber?: string) => {
-	//? 	const result = await fetch(baseUrl + `/${articleNumber}`);
-	//? 	setProduct(await result.json());
-	//? };
 
 	//! Create product
 	const create = async (e: React.FormEvent) => {
@@ -116,7 +98,7 @@ export const ProductProvider = ({ children }: IProductProviderProps) => {
 	//! Fetch a specific user from id.
 
 	const get = async (articleNumber?: string) => {
-		const result = await fetch(`${baseUrl}/product/${articleNumber}`);
+		const result = await fetch(`${baseUrl}/product/details/${articleNumber}`);
 		if (result.status === 200) setProduct(await result.json());
 	};
 
@@ -124,7 +106,7 @@ export const ProductProvider = ({ children }: IProductProviderProps) => {
 	const update = async (e: React.FormEvent) => {
 		e.preventDefault();
 
-		const result = await fetch(`${baseUrl}/product/${product.articleNumber}`, {
+		const result = await fetch(`${baseUrl}/product/details/${product.articleNumber}`, {
 			method: "put",
 			headers: {
 				"Content-Type": "application/json",
@@ -134,14 +116,22 @@ export const ProductProvider = ({ children }: IProductProviderProps) => {
 		if (result.status === 200) setProduct(await result.json());
 	};
 
-	const getFeaturedProducts = async (take = 0) => {
-		const result = await fetch(baseUrl + `/${take}`);
+	const getFeaturedProducts = async (tag = "", take=0) => {
+		const result = await fetch(baseUrl + `/${tag}/${take}`);
 		setFeaturedProducts(await result.json());
 	};
+		const getFirstFlashProducts = async (tag = "", take = 0) => {
+			const result = await fetch(baseUrl + `/${tag}/${take}`);
+			setFirstFlashProducts(await result.json());
+		};
+		const getSecondFlashProducts = async (tag = "", take = 0) => {
+			const result = await fetch(baseUrl + `/${tag}/${take}`);
+			setSecondFlashProducts(await result.json());
+		};
 
 	//! delete specific user with id
 	const remove = async (articleNumber: string|number) => {
-		const result = await fetch(`${baseUrl}/product/${articleNumber}`, {
+		const result = await fetch(`${baseUrl}/product/details/${articleNumber}`, {
 			method: "delete",
 		});
 
@@ -164,6 +154,10 @@ export const ProductProvider = ({ children }: IProductProviderProps) => {
 				setProduct,
 				getFeaturedProducts,
 				featuredProducts,
+				firstFlashProducts,
+				getFirstFlashProducts,
+				secondFlashProducts,
+				getSecondFlashProducts
 			}}
 		>
 			{children}

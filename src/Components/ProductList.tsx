@@ -16,42 +16,45 @@ const ProductList: React.FC = () => {
 
 	return (
 		<>
-			<h3>List of Users</h3>
-			{
-				/* renders a user element for every user in list.. */
-				products.map((product: IProduct) => (
-					<>
-						<div className='product-list' key={product.articleNumber}>
-							<h4>{product.name}</h4>
-							<h5>{product.category}</h5>
-							{currencyFormatter(product.price)}
-							<div>
-								{[...new Array(product.rating)].map((arr, index) => {
-									return index < product.rating ? (
-										<i className='fa-solid fa-star' key={index}></i>
-									) : null;
-								})}
-							</div>
-							<span>{product.description}</span>
+			<h3>Product Manager</h3>
+			<div className='product-list'>
+				{
+					/* renders a user element for every user in list.. */
+					products.map((product: IProduct) => (
+						<>
+							<div className='product-list-item' key={product.articleNumber}>
+								<h4>{product.name}</h4>
+								<img src={product.imageName} alt={product.name} />
+								<h5>{product.category}</h5>
+								{currencyFormatter(product.price)}
+								<div>
+									{[...new Array(product.rating)].map((arr, index) => {
+										return index < product.rating ? (
+											<i className='fa-solid fa-star' key={index}></i>
+										) : null;
+									})}
+								</div>
+								<span>{product.description}</span>
 
-							<div className='d-flex justify-content-between'>
-								<NavLink
-									className='btn-theme'
-									to={`/updateproduct/${product.articleNumber}`}
-								>
-									Update Product
-								</NavLink>
-								<button
-									className='btn-theme btn-theme-dark'
-									onClick={() => remove(product.articleNumber)}
-								>
-									Remove Product
-								</button>
+								
+									<NavLink
+										className='btn-theme'
+										to={`/updateproduct/${product.articleNumber}`}
+									>
+										Update Product
+									</NavLink>
+									<button
+										className='btn-theme btn-theme-dark'
+										onClick={() => remove(product.articleNumber)}
+									>
+										Remove Product
+									</button>
+								
 							</div>
-						</div>
-					</>
-				))
-			}
+						</>
+					))
+				}
+			</div>
 		</>
 	);
 };

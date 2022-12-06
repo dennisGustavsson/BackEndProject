@@ -15,7 +15,7 @@ const ProductGridSection: React.FC<Props> = ({ title, items = [] }) => {
 				</h2>
 				<div className='product-grid'>
 					{items.map((product) => (
-						<ProductCard key={product.articleNumber} item={product} />
+						<ProductCard key={product?.articleNumber} item={product} />
 					))}
 				</div>
 			</div>

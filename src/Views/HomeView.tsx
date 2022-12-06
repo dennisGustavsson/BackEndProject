@@ -19,7 +19,7 @@ const HomeView = () => {
 
 
 	useEffect(() => {
-		getFeaturedProducts("featured"); //!tag name
+		getFeaturedProducts("featured", 8); //!tag name
 	}, []);
 
 	return (

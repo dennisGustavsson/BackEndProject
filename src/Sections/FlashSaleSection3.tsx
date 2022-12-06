@@ -8,7 +8,7 @@ const FlashSaleSection3: React.FC = () => {
 	const { featuredProducts, getFeaturedProducts } = useProductContext() as IProductContext;
 
 	useEffect(() => {
-		getFeaturedProducts(3);
+		getFeaturedProducts("firstflashsale", 4);
 	}, []);
 
 	return (

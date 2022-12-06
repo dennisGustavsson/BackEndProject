@@ -11,14 +11,14 @@ const ProductCard: React.FC<Item> = ({ item }) => {
 	//adds a product to shoppingcart
 	const { incrementQuantity }: any = useShoppingCart();
 	//star rating variable
-	const ratingAmount = item.rating;
+	const ratingAmount = item?.rating;
 
 	return (
 		<>
 			<div className='product-grid'>
 				<div className='product-card'>
 					<div className='product-img'>
-						<img src={item.imageName} alt={item.name} />
+						<img src={item?.imageName} alt={item?.name} />
 						<div className='card-menu'>
 							<NavLink className='menu-icon' to='/wishlist'>
 								<i className='fa-regular fa-heart'></i>
@@ -40,7 +40,7 @@ const ProductCard: React.FC<Item> = ({ item }) => {
 							</NavLink>
 						</div>
 						<NavLink
-							to={`/products/${item.articleNumber
+							to={`/products/${item?.articleNumber
 								/* .toLowerCase()
 								.replace(/\s/g, "-") */}`}
 							className='btn-theme'
@@ -50,8 +50,8 @@ const ProductCard: React.FC<Item> = ({ item }) => {
 					</div>
 
 					<div className='product-info'>
-						<div className='category-title'>{item.category}</div>
-						<h4>{item.name}</h4>
+						<div className='category-title'>{item?.category}</div>
+						<h4>{item?.name}</h4>
 						<div className='rating'>
 							{/* used this :
                 https://blog.logrocket.com/build-a-half-star-rating-component-in-react-from-scratch/ */}
@@ -62,7 +62,7 @@ const ProductCard: React.FC<Item> = ({ item }) => {
 							})}
 						</div>
 						<div className='old-price'></div>
-						<div className='new-price'>{currencyFormatter(item.price)}</div>
+						<div className='new-price'>{currencyFormatter(item?.price)}</div>
 					</div>
 				</div>
 			</div>
