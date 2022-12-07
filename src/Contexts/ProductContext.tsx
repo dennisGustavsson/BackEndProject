@@ -18,9 +18,9 @@ export interface IProductContext {
 	products: IProduct[];
 	create: (e: React.FormEvent) => void;
 	get: (articleNumber: string) => void;
-	getFeaturedProducts: (tag:string, take: number) => void;
-	getFirstFlashProducts: (tag:string, take: number) => void;
-	getSecondFlashProducts: (tag:string, take: number) => void;
+	getFeaturedProducts: (tag:string, limit: number) => void;
+	getFirstFlashProducts: (tag:string, limit: number) => void;
+	getSecondFlashProducts: (tag:string, limit: number) => void;
 	getAll: () => void;
 	update: (e: React.FormEvent) => void;
 	remove: (articleNumber: string|number) => void;
@@ -116,16 +116,16 @@ export const ProductProvider = ({ children }: IProductProviderProps) => {
 		if (result.status === 200) setProduct(await result.json());
 	};
 
-	const getFeaturedProducts = async (tag = "", take=0) => {
-		const result = await fetch(baseUrl + `/${tag}/${take}`);
+	const getFeaturedProducts = async (tag = "featured", limit=0) => {
+		const result = await fetch(baseUrl + `/${tag}/${limit}`);
 		setFeaturedProducts(await result.json());
 	};
-		const getFirstFlashProducts = async (tag = "", take = 0) => {
-			const result = await fetch(baseUrl + `/${tag}/${take}`);
+		const getFirstFlashProducts = async (tag = "firstflashsale", limit = 0) => {
+			const result = await fetch(baseUrl + `/${tag}/${limit}`);
 			setFirstFlashProducts(await result.json());
 		};
-		const getSecondFlashProducts = async (tag = "", take = 0) => {
-			const result = await fetch(baseUrl + `/${tag}/${take}`);
+		const getSecondFlashProducts = async (tag = "secondflashsale", limit = 0) => {
+			const result = await fetch(baseUrl + `/${tag}/${limit}`);
 			setSecondFlashProducts(await result.json());
 		};
 
