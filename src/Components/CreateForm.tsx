@@ -18,7 +18,17 @@ const CreateForm = () => {
 					type='text'
 					placeholder='Enter product name'
 				/>
-				{/* <label htmlFor='reqFirstName'>First Name</label> */}
+
+				<input
+					id='reqTag'
+					value={productRequest.tag}
+					onChange={(e) =>
+						setProductRequest({ ...productRequest, tag: e.target.value })
+					}
+					type='text'
+					placeholder='Enter a tag'
+				/>
+
 				<input
 					id='reqCategory'
 					value={productRequest.category}
@@ -28,7 +38,6 @@ const CreateForm = () => {
 					type='text'
 					placeholder='Enter category name'
 				/>
-				{/* <label htmlFor='reqLastName'>Last Name</label> */}
 
 				<input
 					id='reqDescription'
@@ -65,8 +74,20 @@ const CreateForm = () => {
 					}
 					type='number'
 					placeholder='Enter rating 1-5'
-					min="1"
-					max="5"
+					min='1'
+					max='5'
+				/>
+				<input
+					id='reqImageName'
+					value={productRequest.imageName}
+					onChange={(e) =>
+						setProductRequest({
+							...productRequest,
+							imageName: e.target.value,
+						})
+					}
+					type='text'
+					placeholder='Enter image URL'
 				/>
 				{/* <label htmlFor='reqEmail'>Email</label> */}
 				<button type='submit' className='btn-theme'>

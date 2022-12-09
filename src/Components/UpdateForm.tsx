@@ -27,6 +27,13 @@ const UpdateForm = () => {
 					placeholder={product.name || "Product Name"}
 				/>
 				<input
+					id='Tag'
+					value={product.tag}
+					onChange={(e) => setProduct({ ...product, tag: e.target.value })}
+					type='text'
+					placeholder={product.tag || "Tag"}
+				/>
+				<input
 					id='Category'
 					value={product.category}
 					onChange={(e) => setProduct({ ...product, category: e.target.value })}
@@ -50,6 +57,8 @@ const UpdateForm = () => {
 						setProduct({ ...product, price: parseInt(e.target.value) })
 					}
 					type='number'
+					min='1'
+					placeholder='Price..'
 				/>
 				<input
 					id='Rating'
@@ -60,11 +69,23 @@ const UpdateForm = () => {
 					type='number'
 					min='1'
 					max='5'
+					placeholder='Rating..'
+				/>
+				<input
+					id='ImageName'
+					value={product.imageName}
+					onChange={(e) =>
+						setProduct({ ...product, imageName: e.target.value })
+					}
+					type='text'
+					placeholder={product.imageName || "Image URL"}
 				/>
 
-
-
-				<button type='submit' className='btn-theme' onClick={(e)=> navigate(-1)}>
+				<button
+					type='submit'
+					className='btn-theme'
+					onClick={(e) => navigate(-1)}
+				>
 					Update Product
 				</button>
 			</form>
