@@ -4,7 +4,7 @@ import ExternalLinkIcon from "../Components/ExternalLinkIcon";
 import TabsMenu from "../Components/TabsMenu";
 import ProductGridSection from "./ProductGridSection";
 import { currencyFormatter } from "../Assets/Scripts/CurrencyFormatter";
-import { useProductContext } from "../Contexts/ProductContext";
+import { IProductContext, useProductContext } from "../Contexts/ProductContext";
 import { useEffect } from "react";
 import { IProduct } from "../Models/productModels";
 
@@ -15,12 +15,6 @@ interface Item {
 const ProductDetailsSection: React.FC<Item> = ({ item }) => {
 	// variable for star-rating
 	const ratingAmount: number = item.rating;
-
-	console.log(item.articleNumber)
-	const { featuredProducts, getFeaturedProducts }: any = useProductContext();
-	useEffect(() => {
-		getFeaturedProducts(4);
-	}, []);
 
 	//
 	const [count, setCount] = useState(1);
@@ -36,6 +30,13 @@ const ProductDetailsSection: React.FC<Item> = ({ item }) => {
 				setCount(count - 1);
 		}
 	};
+	const { relatedProducts, getByCategory } =
+		useProductContext() as IProductContext;
+
+	useEffect(() => {
+		getByCategory(item.category, 4);
+
+	}, [relatedProducts]);
 
 	return (
 		<>
@@ -79,9 +80,7 @@ const ProductDetailsSection: React.FC<Item> = ({ item }) => {
 								})}
 							</div>
 							<span className='price'>{currencyFormatter(item.price)}</span>
-							<p className='details'>
-{item.description}
-							</p>
+							<p className='details'>{item.description}</p>
 							<div className='product-form'>
 								<form>
 									<div className='choose-size'>
@@ -230,7 +229,10 @@ const ProductDetailsSection: React.FC<Item> = ({ item }) => {
 						</div>
 					</div>
 					<TabsMenu />
-					<ProductGridSection title='Related Products' items={featuredProducts} />
+					<ProductGridSection
+						title='Related Products'
+						items={relatedProducts}
+					/>
 				</div>
 			</div>
 		</>

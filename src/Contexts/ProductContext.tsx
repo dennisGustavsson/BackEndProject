@@ -12,18 +12,20 @@ export interface IProductContext {
 	productRequest: IProductRequest;
 	setProduct: React.Dispatch<React.SetStateAction<IProduct>>;
 	featuredProducts: IProduct[];
+	relatedProducts: IProduct[];
 	firstFlashProducts: IProduct[];
 	secondFlashProducts: IProduct[];
 	setProductRequest: React.Dispatch<React.SetStateAction<IProductRequest>>;
 	products: IProduct[];
 	create: (e: React.FormEvent) => void;
 	get: (articleNumber: string) => void;
-	getFeaturedProducts: (tag:string, limit: number) => void;
-	getFirstFlashProducts: (tag:string, limit: number) => void;
-	getSecondFlashProducts: (tag:string, limit: number) => void;
+	getFeaturedProducts: (tag: string, limit: number) => void;
+	getFirstFlashProducts: (tag: string, limit: number) => void;
+	getSecondFlashProducts: (tag: string, limit: number) => void;
+	getByCategory: (category: string, limit: number) => void;
 	getAll: () => void;
 	update: (e: React.FormEvent) => void;
-	remove: (articleNumber: string|number) => void;
+	remove: (articleNumber: string | number) => void;
 }
 
 //! - - - - - context - - - - - -
@@ -70,9 +72,9 @@ export const ProductProvider = ({ children }: IProductProviderProps) => {
 	// //flashsale product list
 	const [firstFlashProducts, setFirstFlashProducts] = useState([]);
 	const [secondFlashProducts, setSecondFlashProducts] = useState([]);
+	const [relatedProducts, setRelatedProducts] = useState([]);
 	// //bottom products
 	// const [specialProducts, setSpecialProducts] = useState([]);
-
 
 	//! Create product
 	const create = async (e: React.FormEvent) => {
@@ -106,31 +108,43 @@ export const ProductProvider = ({ children }: IProductProviderProps) => {
 	const update = async (e: React.FormEvent) => {
 		e.preventDefault();
 
-		const result = await fetch(`${baseUrl}/product/details/${product.articleNumber}`, {
-			method: "put",
-			headers: {
-				"Content-Type": "application/json",
-			},
-			body: JSON.stringify(product),
-		});
+		const result = await fetch(
+			`${baseUrl}/product/details/${product.articleNumber}`,
+			{
+				method: "put",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify(product),
+			}
+		);
 		if (result.status === 200) setProduct(await result.json());
 	};
 
-	const getFeaturedProducts = async (tag = "featured", limit=0) => {
+	// GET FEATURED PRODUCTS
+
+	const getFeaturedProducts = async (tag = "featured", limit = 0) => {
 		const result = await fetch(baseUrl + `/${tag}/${limit}`);
 		setFeaturedProducts(await result.json());
 	};
-		const getFirstFlashProducts = async (tag = "firstflashsale", limit = 0) => {
-			const result = await fetch(baseUrl + `/${tag}/${limit}`);
-			setFirstFlashProducts(await result.json());
-		};
-		const getSecondFlashProducts = async (tag = "secondflashsale", limit = 0) => {
-			const result = await fetch(baseUrl + `/${tag}/${limit}`);
-			setSecondFlashProducts(await result.json());
-		};
+
+	const getFirstFlashProducts = async (tag = "firstflashsale", limit = 0) => {
+		const result = await fetch(baseUrl + `/${tag}/${limit}`);
+		setFirstFlashProducts(await result.json());
+	};
+
+	const getSecondFlashProducts = async (tag = "secondflashsale", limit = 4) => {
+		const result = await fetch(baseUrl + `/${tag}/${limit}`);
+		setSecondFlashProducts(await result.json());
+	};
+
+	const getByCategory = async (category: string, limit = 0) => {
+		const result = await fetch(baseUrl + `/categories/category/${category}/${limit}`);
+		setRelatedProducts(await result.json());
+	};
 
 	//! delete specific user with id
-	const remove = async (articleNumber: string|number) => {
+	const remove = async (articleNumber: string | number) => {
 		const result = await fetch(`${baseUrl}/product/details/${articleNumber}`, {
 			method: "delete",
 		});
@@ -157,7 +171,9 @@ export const ProductProvider = ({ children }: IProductProviderProps) => {
 				firstFlashProducts,
 				getFirstFlashProducts,
 				secondFlashProducts,
-				getSecondFlashProducts
+				getSecondFlashProducts,
+				relatedProducts,
+				getByCategory
 			}}
 		>
 			{children}
