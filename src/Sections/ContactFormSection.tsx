@@ -1,76 +1,75 @@
-import { useState } from "react";
-import { submitData, validation } from "../Assets/Scripts/submitValidation";
-import { ContactModel } from "../Models/formModel";
-
+import React, { useState } from "react";
+import {
+	validateEmail,
+	validateName,
+	validateComment,
+} from "../Assets/Scripts/submitValidation";
+// import { ContactModel } from "../Models/formModel";
 
 interface ContactFormType {
-name: string,
-email: string,
-comments: string,
+	name: string;
+	email: string;
+	comments: string;
 }
-const ContactFormSection: React.FC<ContactModel> = () => {
-	const defaultValues : ContactFormType = {name: '', email: '', comments:''}
-	const [name, setName] = useState<string>("");
-	const [email, setEmail] = useState<string>("");
-	const [comments, setComment] = useState<string>("");
+const ContactFormSection: React.FC = () => {
+	let defaultValues: ContactFormType = { name: "", email: "", comments: "" };
+	const [contactData, setContactData] =
+		useState<ContactFormType>(defaultValues);
 	const [errors, setErrors] = useState<ContactFormType>(defaultValues);
+
+	const baseUrl: string = "http://localhost:5000/api/contactform";
 	const [submitted, setSubmitted] = useState<boolean>(false);
 	const [submitFailed, setFailedSubmitted] = useState<boolean>(false);
 
-
-	//handles the inputs and sets the value to each variable
-	const handleChange = (
-		e: React.ChangeEvent<HTMLTextAreaElement> | React.ChangeEvent<HTMLInputElement>
-	) => {
+	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const { id, value } = e.target;
+		setContactData({ ...contactData, [id]: value });
 		switch (id) {
 			case "name":
-				setName(value); //sets the value of name
+				setErrors({ ...errors, [id]: validateName(id, value) });
 				break;
 			case "email":
-				setEmail(value);
-				break;
-			case "comments":
-				setComment(value);
+				setErrors({ ...errors, [id]: validateEmail(id, value) });
 				break;
 		}
-		//sets the errors in the object onChange
-		setErrors({ ...errors, [id]: validation(e, errors) });
+	};
+	const handleTextareaChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+		const { id, value } = e.target;
+		setContactData({ ...contactData, [id]: value });
+		if (id === "comments")
+			setErrors({ ...errors, [id]: validateComment(id, value) });
 	};
 
-	const handleSubmit = async (
-		e:
-			| React.ChangeEvent<HTMLTextAreaElement>
-			| React.ChangeEvent<HTMLInputElement>
-	) => {
+	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault();
-		setFailedSubmitted(false);
 		setSubmitted(false);
-
-		setErrors(validation(e, { name, email, comments })); //sets the errors from valitation form
+		setFailedSubmitted(false);
 
 		if (
-			errors.name === null &&
-			errors.email === null &&
-			errors.comments === null
+			contactData.name !== "" &&
+			contactData.email !== "" &&
+			contactData.comments !== ""
 		) {
-			//makes a json object of our form
-			let data = JSON.stringify({ name, email, comments });
+			if (errors.name === "" && errors.email === "" && errors.comments === "") {
+				const response = await fetch(baseUrl, {
+					method: "post",
+					headers: {
+						"Content-Type": "application/json",
+					},
+					body: JSON.stringify(contactData),
+				});
 
-			setName("");
-			setEmail("");
-			setComment("");
-			setErrors({ name, email, comments });
-
-			if (await submitData(data)) {
-				setSubmitted(true);
-				setFailedSubmitted(false);
-			} else {
-				setSubmitted(false);
-				setFailedSubmitted(true);
+				if (response.status === 200) {
+					console.log("funkade!");
+					setSubmitted(true);
+					setFailedSubmitted(false);
+					setContactData(defaultValues);
+				} else {
+					console.log("funkade inte!");
+					setSubmitted(false);
+					setFailedSubmitted(true);
+				}
 			}
-		} else {
-			setSubmitted(false);
 		}
 	};
 
@@ -97,7 +96,7 @@ const ContactFormSection: React.FC<ContactModel> = () => {
 			)}
 
 			<h3>Come in Contact with Us</h3>
-			<form id='form' className='form-theme' onSubmit={() => handleSubmit} noValidate>
+			<form id='form' className='form-theme' onSubmit={handleSubmit} noValidate>
 				<div className='d-grid-2'>
 					<div className='relative'>
 						<input
@@ -106,7 +105,7 @@ const ContactFormSection: React.FC<ContactModel> = () => {
 							type='text'
 							placeholder=' '
 							onChange={handleChange}
-							value={name}
+							value={contactData.name}
 						/>
 						<label htmlFor='name'>Your Name</label>
 						<span className='error-msg'>{errors.name}</span>
@@ -118,7 +117,7 @@ const ContactFormSection: React.FC<ContactModel> = () => {
 							type='email'
 							placeholder=' '
 							onChange={handleChange}
-							value={email}
+							value={contactData.email}
 						/>
 						<label htmlFor='email'>Your Email</label>
 						<span className='error-msg'>{errors.email}</span>
@@ -130,8 +129,8 @@ const ContactFormSection: React.FC<ContactModel> = () => {
 						id='comments'
 						className={errors.comments ? "error-border" : ""}
 						placeholder=' '
-						onChange={handleChange}
-						value={comments}
+						onChange={handleTextareaChange}
+						value={contactData.comments}
 					></textarea>
 					<label htmlFor='comments'>Comments</label>
 					<span id='comments-error' className='error-msg'>

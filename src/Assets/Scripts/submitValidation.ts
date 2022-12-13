@@ -1,93 +1,42 @@
-import { Errors } from "../../Models/formModel";
 
-
-export interface Form {
-  name: string 
-  email: string
-  comments: string
+export interface FormData {
+	name: string;
+	email: string;
+	comments: string;
 }
 
-export const submitData = async (data:string) => {
-  const res = await fetch(
-    "https://win22-webapi.azurewebsites.net/api/contactform",
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: data,
-    }
-  );
-
-  if (res.status === 200) {
-    return true;
-  } else {
-    return false;
-  }
-};
-
-//regex for name and email inputs
-const regexEmail: RegExp =
-  /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-const regexName:RegExp = /^(?=.{2,50}$)[a-z]+(?:['-\s][a-z]+)*$/i;
-
-//function that takes event and a form variable
-export const validation = (e: React.ChangeEvent<HTMLTextAreaElement> | React.ChangeEvent<HTMLInputElement>,
-	form: Form
+export const validateName = (
+	inputName: string,
+	value: string,
+	regexName: RegExp = /^(?=.{2,50}$)[a-z]+(?:['-\s][a-z]+)*$/i
 ) => {
-	if (e.type === "submit") {
-		const errors: any = {name:'', email:'', comments: ''};
-		errors.name = validateName(form.name);
-		errors.email = validateEmail(form.email);
-		errors.comments = validateComment(form.comments);
-		return errors;
+	if (!regexName.test(value)) return `${inputName} is required`;
+	else return "";
+};
+
+export const validateEmail = (
+	inputEmail: string,
+	value: string,
+	regexEmail: RegExp = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+) => {
+	if (!regexEmail.test(value)) return `${inputEmail} is required`;
+	else return "";
+};
+
+export const validateComment = (
+	inputText: string,
+	value: string,
+	minLength: number = 20
+) => {
+	// let charsReq = 20;
+	let charsleft = minLength - value.length;
+	if (!value) {
+		//if no value entered
+		return "An comment is required";
+	} else if (value.length < minLength) {
+		// if value dont meets regex rules
+		return `You need to enter at least ${charsleft} more charachters`;
 	} else {
-		const { id, value } = e.target;
-		switch (id) {
-			case "name":
-				return validateName(value);
-			case "email":
-				return validateEmail(value);
-			case "comments":
-				return validateComment(value);
-		}
+		return ""; //errors value is epmty
 	}
-};
-
-//checks input name
-const validateName = (value:string) => {
-  if (!value) {
-    return "Name is required";
-  } else if (!regexName.test(value)) {
-    return "Enter a name without special charachters";
-  } else {
-    return null; //errors value is epmty
-  }
-};
-
-//checks input email
-const validateEmail = (value:string) => {
-  if (!value) {
-    //if no value entered
-    return "An email is required";
-  } else if (!regexEmail.test(value)) {
-    // if value dont meets regex rules
-    return "Enter a valid email (eg. email@adress.com";
-  } else {
-    return null; //errors value is epmty
-  }
-};
-// checks input comment
-const validateComment = (value:string) => {
-  let charsReq = 20;
-  let charsleft = charsReq - value.length;
-  if (!value) {
-    //if no value entered
-    return "An comment is required";
-  } else if (value.length < 20) {
-    // if value dont meets regex rules
-    return `You need to enter at least ${charsleft} more charachters`;
-  } else {
-    return null; //errors value is epmty
-  }
 };
