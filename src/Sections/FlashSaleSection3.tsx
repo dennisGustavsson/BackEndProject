@@ -2,14 +2,24 @@ import { NavLink } from "react-router-dom";
 import { useProductContext } from "../Contexts/ProductContext";
 import { useEffect } from "react";
 import ProductGridSection from "./ProductGridSection";
-import { IProductContext } from '../Contexts/ProductContext'
+import { IProductContext } from "../Contexts/ProductContext";
 
 const FlashSaleSection3: React.FC = () => {
-	const { featuredProducts, getFeaturedProducts } = useProductContext() as IProductContext;
+	const { relatedProducts, firstFlashProducts, secondFlashProducts, getFirstFlashProducts, getSecondFlashProducts, getByCategory } =
+		useProductContext() as IProductContext;
 
+	// useEffect(() => {
+	// 	getFeaturedProducts("featuredProducts", 4);
+	// }, []);
 	useEffect(() => {
-		getFeaturedProducts("firstflashsale", 4);
+		getFirstFlashProducts("firstflashsale", 4);
 	}, []);
+	useEffect(() => {
+		getSecondFlashProducts("secondflashsale", 4);
+	}, []);
+		useEffect(() => {
+			getByCategory("sets", 4);
+		}, [relatedProducts]);
 
 	return (
 		<>
@@ -25,15 +35,15 @@ const FlashSaleSection3: React.FC = () => {
 					<div className='product-grid-col'>
 						<ProductGridSection
 							title='Latest Product'
-							items={featuredProducts}
+							items={relatedProducts}
 						/>
 						<ProductGridSection
 							title='Best Selling Product'
-							items={featuredProducts}
+							items={firstFlashProducts}
 						/>
 						<ProductGridSection
 							title='Top Reacted Product'
-							items={featuredProducts}
+							items={secondFlashProducts}
 						/>
 					</div>
 				</div>
