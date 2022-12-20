@@ -14,11 +14,13 @@ import { ProductProvider } from "./Contexts/ProductContext";
 import { ShoppingCartProvider } from "./Contexts/ShoppingCartContext";
 import CreateProductView from "./Views/CreateProductView";
 import UpdateProductView from "./Views/UpdateProductView";
+import LoginView from "./Views/LoginView";
+import { UserProvider } from "./Contexts/UserContext";
 
 function App() {
 	return (
 		<BrowserRouter>
-
+			<UserProvider>
 				<ShoppingCartProvider>
 					<ProductProvider>
 						<Routes>
@@ -30,8 +32,12 @@ function App() {
 							/>
 							<Route path='/products/:id' element={<ProductDetailsView />} />
 							<Route path='/createproduct' element={<CreateProductView />} />
-							<Route path='/updateproduct/:id' element={<UpdateProductView />} />
+							<Route
+								path='/updateproduct/:id'
+								element={<UpdateProductView />}
+							/>
 							<Route path='/contacts' element={<ContactsView />} />
+							<Route path='/login' element={<LoginView />} />
 							<Route path='/search' element={<SearchView />} />
 							<Route path='/compare' element={<CompareView />} />
 							<Route path='/wishlist' element={<WishListView />} />
@@ -40,7 +46,7 @@ function App() {
 						</Routes>
 					</ProductProvider>
 				</ShoppingCartProvider>
-
+			</UserProvider>
 		</BrowserRouter>
 	);
 }

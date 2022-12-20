@@ -84,6 +84,7 @@ export const ProductProvider = ({ children }: IProductProviderProps) => {
 			method: "post",
 			headers: {
 				"Content-Type": "application/json",
+				'Authorization': `Bearer ${localStorage.getItem("accessToken")}`
 			},
 			body: JSON.stringify(productRequest),
 		});
@@ -114,6 +115,7 @@ export const ProductProvider = ({ children }: IProductProviderProps) => {
 				method: "put",
 				headers: {
 					"Content-Type": "application/json",
+					"Authorization": `Bearer ${localStorage.getItem("accessToken")}`
 				},
 				body: JSON.stringify(product),
 			}
@@ -121,7 +123,7 @@ export const ProductProvider = ({ children }: IProductProviderProps) => {
 		if (result.status === 200) setProduct(await result.json());
 	};
 
-	// GET FEATURED PRODUCTS
+	// GET SPECIFIC PRODUCTS
 
 	const getFeaturedProducts = async (tag = "featured", limit = 0) => {
 		const result = await fetch(baseUrl + `/${tag}/${limit}`);
@@ -139,7 +141,9 @@ export const ProductProvider = ({ children }: IProductProviderProps) => {
 	};
 
 	const getByCategory = async (category: string, limit = 0) => {
-		const result = await fetch(baseUrl + `/categories/category/${category}/${limit}`);
+		const result = await fetch(
+			baseUrl + `/categories/category/${category}/${limit}`
+		);
 		setRelatedProducts(await result.json());
 	};
 
@@ -147,6 +151,10 @@ export const ProductProvider = ({ children }: IProductProviderProps) => {
 	const remove = async (articleNumber: string | number) => {
 		const result = await fetch(`${baseUrl}/product/details/${articleNumber}`, {
 			method: "delete",
+			headers: {
+				"Content-Type": "application/json",
+				'authorization': `Bearer ${localStorage.getItem("accessToken")}`,
+			},
 		});
 
 		if (result.status === 204) setProduct(defaultProductValues);
@@ -173,7 +181,7 @@ export const ProductProvider = ({ children }: IProductProviderProps) => {
 				secondFlashProducts,
 				getSecondFlashProducts,
 				relatedProducts,
-				getByCategory
+				getByCategory,
 			}}
 		>
 			{children}

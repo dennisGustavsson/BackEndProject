@@ -50,6 +50,11 @@ const MainMenuSection: React.FC = () => {
 							Manage
 						</NavLink>
 					</li>
+					<li>
+						<NavLink className='menu-link' to='/login' end>
+							Sign In
+						</NavLink>
+					</li>
 				</ul>
 
 				<div className='main-menu-icons'>
