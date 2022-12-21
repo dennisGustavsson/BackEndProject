@@ -20,7 +20,7 @@ export const validateEmail = (
 	regexEmail: RegExp = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 ) => {
 	if (!regexEmail.test(value)) return `${inputEmail} is required`;
-	else return "";
+	else return ""
 };
 
 export const validateComment = (
@@ -40,3 +40,15 @@ export const validateComment = (
 		return ""; //errors value is epmty
 	}
 };
+
+export const validatePassword = (
+	inputPassword: string,
+	value: string,
+	regexName: RegExp = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/
+) => {
+	if (!regexName.test(value)) return `${inputPassword} is required`;
+	else return "";
+};
+
+
+

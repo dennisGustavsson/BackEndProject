@@ -14,7 +14,7 @@
     border: none;
     padding-inline: 1rem;
     transition: 200ms ease-in-out;
-    cursor: pointer;
+    // cursor: pointer;
 
     &:hover {
         background-color: $color-theme-hover;
@@ -23,6 +23,10 @@
 
     &:focus {
         background-color: $color-gray-15;
+    }
+    &:disabled {
+        background-color: $color-gray-15;
+        color: $color-gray-5;
     }
 
     /* border corners */

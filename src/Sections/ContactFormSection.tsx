@@ -60,12 +60,12 @@ const ContactFormSection: React.FC = () => {
 				});
 
 				if (response.status === 200) {
-					console.log("funkade!");
+
 					setSubmitted(true);
 					setFailedSubmitted(false);
 					setContactData(defaultValues);
 				} else {
-					console.log("funkade inte!");
+
 					setSubmitted(false);
 					setFailedSubmitted(true);
 				}
