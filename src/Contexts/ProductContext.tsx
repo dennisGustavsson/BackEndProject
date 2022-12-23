@@ -67,14 +67,12 @@ export const ProductProvider = ({ children }: IProductProviderProps) => {
 		defaultProductRequestValues
 	);
 
-	// //featured products list
+	//featured products list
 	const [featuredProducts, setFeaturedProducts] = useState([]);
-	// //flashsale product list
+	//flashsale product list
 	const [firstFlashProducts, setFirstFlashProducts] = useState([]);
 	const [secondFlashProducts, setSecondFlashProducts] = useState([]);
 	const [relatedProducts, setRelatedProducts] = useState([]);
-	// //bottom products
-	// const [specialProducts, setSpecialProducts] = useState([]);
 
 	//! Create product
 	const create = async (e: React.FormEvent) => {
@@ -84,7 +82,7 @@ export const ProductProvider = ({ children }: IProductProviderProps) => {
 			method: "post",
 			headers: {
 				"Content-Type": "application/json",
-				'Authorization': `Bearer ${localStorage.getItem("accessToken")}`
+				Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
 			},
 			body: JSON.stringify(productRequest),
 		});
@@ -115,7 +113,7 @@ export const ProductProvider = ({ children }: IProductProviderProps) => {
 				method: "put",
 				headers: {
 					"Content-Type": "application/json",
-					"Authorization": `Bearer ${localStorage.getItem("accessToken")}`
+					Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
 				},
 				body: JSON.stringify(product),
 			}
@@ -153,7 +151,7 @@ export const ProductProvider = ({ children }: IProductProviderProps) => {
 			method: "delete",
 			headers: {
 				"Content-Type": "application/json",
-				'authorization': `Bearer ${localStorage.getItem("accessToken")}`,
+				authorization: `Bearer ${localStorage.getItem("accessToken")}`,
 			},
 		});
 

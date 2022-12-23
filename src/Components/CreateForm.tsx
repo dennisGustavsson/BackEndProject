@@ -89,7 +89,6 @@ const CreateForm = () => {
 					type='text'
 					placeholder='Enter image URL'
 				/>
-				{/* <label htmlFor='reqEmail'>Email</label> */}
 				<button type='submit' className='btn-theme'>
 					Create Product
 				</button>

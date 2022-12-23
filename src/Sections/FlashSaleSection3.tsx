@@ -5,21 +5,24 @@ import ProductGridSection from "./ProductGridSection";
 import { IProductContext } from "../Contexts/ProductContext";
 
 const FlashSaleSection3: React.FC = () => {
-	const { relatedProducts, firstFlashProducts, secondFlashProducts, getFirstFlashProducts, getSecondFlashProducts, getByCategory } =
-		useProductContext() as IProductContext;
+	const {
+		relatedProducts,
+		firstFlashProducts,
+		secondFlashProducts,
+		getFirstFlashProducts,
+		getSecondFlashProducts,
+		getByCategory,
+	} = useProductContext() as IProductContext;
 
-	// useEffect(() => {
-	// 	getFeaturedProducts("featuredProducts", 4);
-	// }, []);
 	useEffect(() => {
 		getFirstFlashProducts("firstflashsale", 4);
 	}, []);
 	useEffect(() => {
 		getSecondFlashProducts("secondflashsale", 4);
 	}, []);
-		useEffect(() => {
-			getByCategory("sets", 4);
-		}, [relatedProducts]);
+	useEffect(() => {
+		getByCategory("sets", 4);
+	}, []);
 
 	return (
 		<>

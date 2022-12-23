@@ -3,7 +3,7 @@ import UpdateForm from "../Components/UpdateForm";
 import { FooterSection } from "../Sections/FooterSection";
 import MainMenuSection from "../Sections/MainMenuSection";
 
-const UpdateProductView = () => {
+const UpdateProductView: React.FC = () => {
 	return (
 		<>
 			<MainMenuSection />

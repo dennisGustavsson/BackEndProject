@@ -12,11 +12,10 @@ import ShowcaseSection from "../Sections/ShowcaseSection";
 import { useProductContext } from "../Contexts/ProductContext";
 import { useEffect } from "react";
 
-const HomeView = () => {
-	const { featuredProducts, getFeaturedProducts }:any = useProductContext();
+const HomeView: React.FC = () => {
+	const { featuredProducts, getFeaturedProducts }: any = useProductContext();
 
 	/* window title  */
-
 
 	useEffect(() => {
 		getFeaturedProducts("featured", 8); //!tag name

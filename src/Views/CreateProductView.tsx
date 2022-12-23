@@ -3,7 +3,7 @@ import ProductList from "../Components/ProductList";
 import { FooterSection } from "../Sections/FooterSection";
 import MainMenuSection from "../Sections/MainMenuSection";
 
-const CreateProductView = () => {
+const CreateProductView: React.FC = () => {
 	return (
 		<>
 			<MainMenuSection />

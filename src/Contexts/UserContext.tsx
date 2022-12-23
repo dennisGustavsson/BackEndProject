@@ -90,7 +90,6 @@ export const UserProvider = ({ children }: UserProviderProps) => {
 					body: JSON.stringify(newUser),
 				});
 				if (result.status === 201) {
-					// const data = await result.json();
 					setNewUser(defaultValuesNewUser);
 				} else {
 					console.log(await result.json());

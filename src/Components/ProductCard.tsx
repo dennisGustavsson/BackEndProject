@@ -40,9 +40,7 @@ const ProductCard: React.FC<Item> = ({ item }) => {
 							</NavLink>
 						</div>
 						<NavLink
-							to={`/products/${item?.articleNumber
-								/* .toLowerCase()
-								.replace(/\s/g, "-") */}`}
+							to={`/products/${item?.articleNumber}`}
 							className='btn-theme'
 						>
 							Quick view
